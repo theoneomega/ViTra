@@ -1,10 +1,6 @@
 <div class="panel panel-info">
   <div class="panel-heading"> Persona</div>
   <div class="panel-body">
-    Panel content
-
-
-
 
     <div class="form-group">
       <%= f.label :first_name, :class => "col-sm-2 control-label" %>
@@ -153,10 +149,18 @@
         <%= f.radio_button :shift, "Nocturno" %>
         <%= label :nocturno, 'Nocturno' %>
       </div>
-
-
-
     </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.link_to_add '<i class="icon icon-attention-circled">   Agregar probable delito</i>'.html_safe, :crime_person, :class => "btn btn-primary" %>
+      </div>
+    </div>
+    <p>
+      <%=f.fields_for :crime_person do |builder| %>
+        <%= render 'crime_fields', :f => builder %>
+      <%end%>
+    </p>
 
     <%=f.link_to_remove '<i class="icon icon-user-delete">  Remover persona</i>'.html_safe,:class => 'btn btn-danger'%>
   </div>
@@ -174,7 +178,7 @@
   $(function() {
     $('.datePicker').each(function() {
       $(this).datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true,
-yearRange: '-100:+0'});
+        yearRange: '-100:+0'});
     });
   });
 </script>

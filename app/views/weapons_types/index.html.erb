@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_weapons_type_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Weapons type
+  <% end %>
+  <h1>Listing weapons_types</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @weapons_types) do |weapons_type| %>
+            <td><%= weapons_type.id %></td>
+            <td><%= weapons_type.description %></td>
+            <td><%= link_to 'Show', weapons_type %></td>
+        <td><%= link_to 'Edit', edit_weapons_type_path(weapons_type) %></td>
+        <td><%= link_to 'Destroy', weapons_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,67 @@
+<div class="page-header">
+  <%= link_to new_item_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Item
+  <% end %>
+  <h1>Listing items</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>Money</th>
+            <th>Tactical equipment</th>
+            <th>Documents</th>
+            <th>Kind</th>
+            <th>Quantity</th>
+            <th>Real money</th>
+            <th>Observations</th>
+            <th>Handcufs</th>
+            <th>Tactical vest</th>
+            <th>Anti gas mask</th>
+            <th>Binoculars</th>
+            <th>Ammunition clip</th>
+            <th>Official uniform</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Inventary</th>
+            <th>Serial</th>
+            <th>Document type</th>
+            <th>Real document</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @items) do |item| %>
+            <td><%= item.id %></td>
+            <td><%= item.money %></td>
+            <td><%= item.tactical_equipment %></td>
+            <td><%= item.documents %></td>
+            <td><%= item.kind %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.real_money %></td>
+            <td><%= item.observations %></td>
+            <td><%= item.handcufs %></td>
+            <td><%= item.tactical_vest %></td>
+            <td><%= item.anti_gas_mask %></td>
+            <td><%= item.binoculars %></td>
+            <td><%= item.ammunition_clip %></td>
+            <td><%= item.official_uniform %></td>
+            <td><%= item.brand %></td>
+            <td><%= item.model %></td>
+            <td><%= item.inventary %></td>
+            <td><%= item.serial %></td>
+            <td><%= item.document_type %></td>
+            <td><%= item.real_document %></td>
+            <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

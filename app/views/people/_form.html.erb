@@ -1,0 +1,195 @@
+<%= nested_form_for(@person, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @person.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h4>
+
+      <ul>
+        <% @person.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= f.label :first_name, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :first_name, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name1, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :last_name1, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name2, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :last_name2, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :alias, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :alias, :class => "form-control" %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :nacionality, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select :nacionality,["Mexicano","Extranjero"] %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :ethni_group, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :ethni_group, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :birth_date, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10 input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+      <%= f.text_field :birth_date, :as => :datetime_picker, :class => "form-control", :id => "fecha" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :age, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :age, :class => "form-control" , :id => "edad" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :rfc, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :rfc, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :sex, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select :sex, ["Masculino", "Femenino"], :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :domicile, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :domicile, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :status_id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.collection_select(:status_id, Status.all, :id, :description, {:prompt => "seleccione el estatus de la persona"}) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :residencial_status, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.radio_button :residencial_status, 'Nacional', :checked => true %> 
+      <%= label :nacional, 'Nacional' %>
+      <%= f.radio_button :residencial_status, 'Extranjero legal' %>
+      <%= label :extranjero_legal, 'Extranjero legal' %>
+      <%= f.radio_button :residencial_status, "Extranjero ilegal" %>
+      <%= label :extranjero_ilegal, 'Extranjero ilegal' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :profession, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :profession, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :pupilage, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :pupilage, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :particular_phone, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :particular_phone, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :mobile_phone, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :mobile_phone, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :observations, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :observations, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :detention_ubication, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :detention_ubication, :class => "form-control", :value => "DIRECCIÓN DE VIALIDAD", :readonly => true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :at_disposal_of, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select :at_disposal_of, ["OFICIAL CALIFICADOR","FISCALIA GRAL","PGR","MIGRACIÓN","OTROS"], :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :official_qualifier_id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.collection_select(:official_qualifier_id, OfficialQualifier.all, :id, :name) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :shift, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+
+      <%= f.radio_button :shift, 'Matutino', :checked => true %> 
+      <%= label :matutino, 'Matutino' %>
+      <%= f.radio_button :shift, 'Vespertino' %>
+      <%= label :vespertino, 'Vespertino' %>
+      <%= f.radio_button :shift, "Nocturno" %>
+      <%= label :nocturno, 'Nocturno' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-attention-circled">   Agregar probable delito</i>'.html_safe, :crime_person, :class => "btn btn-primary" %>
+    </div>
+  </div>
+  <p>
+    <%=f.fields_for :crime_person do |builder| %>
+      <%= render 'crime_fields', :f => builder %>
+    <%end%>
+  </p>
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript" src="/assets/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="/assets/jquery-ui-1.8.13.custom.min.js"></script>
+<script type="text/javascript" src="/assets/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/assets/jquery.ui.datepicker-es.js"></script>
+
+<script type="text/javascript">
+  $(function() {
+    $('#fecha').datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true,
+      yearRange: '-100:+0'});
+  });
+
+
+</script>

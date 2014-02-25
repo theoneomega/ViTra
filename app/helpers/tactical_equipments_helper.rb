@@ -1,0 +1,2 @@
+module TacticalEquipmentsHelper
+end

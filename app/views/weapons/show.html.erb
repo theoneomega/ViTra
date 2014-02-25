@@ -1,0 +1,56 @@
+<div class="page-header">
+  <%= link_to weapons_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_weapon_path(@weapon), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show weapon</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Id:</dt>
+  <dd><%= @weapon.id %></dd>
+
+  <dt>Kind:</dt>
+  <dd><%= @weapon.kind %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @weapon.description %></dd>
+
+  <dt>Brand:</dt>
+  <dd><%= @weapon.brand %></dd>
+
+  <dt>Weapon type:</dt>
+  <dd><%= @weapon.weapon_type %></dd>
+
+  <dt>Caliber:</dt>
+  <dd><%= @weapon.caliber %></dd>
+
+  <dt>Serial:</dt>
+  <dd><%= @weapon.serial %></dd>
+
+  <dt>Inventary:</dt>
+  <dd><%= @weapon.inventary %></dd>
+
+  <dt>Sedena enrollment:</dt>
+  <dd><%= @weapon.sedena_enrollment %></dd>
+
+  <dt>Carriatage number:</dt>
+  <dd><%= @weapon.carriatage_number %></dd>
+
+  <dt>Util carriatages:</dt>
+  <dd><%= @weapon.util_carriatages %></dd>
+
+  <dt>Used carriateges:</dt>
+  <dd><%= @weapon.used_carriateges %></dd>
+
+  <dt>Chargers numbers:</dt>
+  <dd><%= @weapon.chargers_numbers %></dd>
+
+  <dt>Iph:</dt>
+  <dd><%= @weapon.iph_id %></dd>
+
+</dl>

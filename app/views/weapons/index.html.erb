@@ -1,0 +1,55 @@
+<div class="page-header">
+  <%= link_to new_weapon_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Weapon
+  <% end %>
+  <h1>Listing weapons</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>Kind</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th>Weapon type</th>
+            <th>Caliber</th>
+            <th>Serial</th>
+            <th>Inventary</th>
+            <th>Sedena enrollment</th>
+            <th>Carriatage number</th>
+            <th>Util carriatages</th>
+            <th>Used carriateges</th>
+            <th>Chargers numbers</th>
+            <th>Iph</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @weapons) do |weapon| %>
+            <td><%= weapon.id %></td>
+            <td><%= weapon.kind %></td>
+            <td><%= weapon.description %></td>
+            <td><%= weapon.brand %></td>
+            <td><%= weapon.weapon_type %></td>
+            <td><%= weapon.caliber %></td>
+            <td><%= weapon.serial %></td>
+            <td><%= weapon.inventary %></td>
+            <td><%= weapon.sedena_enrollment %></td>
+            <td><%= weapon.carriatage_number %></td>
+            <td><%= weapon.util_carriatages %></td>
+            <td><%= weapon.used_carriateges %></td>
+            <td><%= weapon.chargers_numbers %></td>
+            <td><%= weapon.iph_id %></td>
+            <td><%= link_to 'Show', weapon %></td>
+        <td><%= link_to 'Edit', edit_weapon_path(weapon) %></td>
+        <td><%= link_to 'Destroy', weapon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

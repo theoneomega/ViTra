@@ -1,0 +1,140 @@
+<%= form_for(@item, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @item.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h4>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :id, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :money, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :money, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :tactical_equipment, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :tactical_equipment, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :documents, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :documents, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :kind, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :kind, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :quantity, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :quantity, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :real_money, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :real_money, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :observations, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :observations, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :handcufs, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :handcufs, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :tactical_vest, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :tactical_vest, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :anti_gas_mask, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :anti_gas_mask, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :binoculars, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :binoculars, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ammunition_clip, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :ammunition_clip, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :official_uniform, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :official_uniform, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :brand, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :brand, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :model, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :model, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :inventary, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :inventary, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :serial, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :serial, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :document_type, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :document_type, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :real_document, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.check_box :real_document, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

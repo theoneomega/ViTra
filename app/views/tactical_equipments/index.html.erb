@@ -1,0 +1,45 @@
+<div class="page-header">
+  <%= link_to new_tactical_equipment_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Tactical equipment
+  <% end %>
+  <h1>Listing tactical_equipments</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>Kind</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Inventary</th>
+            <th>Serial</th>
+            <th>Quantity</th>
+            <th>Observations</th>
+            <th>Iph</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @tactical_equipments) do |tactical_equipment| %>
+            <td><%= tactical_equipment.id %></td>
+            <td><%= tactical_equipment.kind %></td>
+            <td><%= tactical_equipment.brand %></td>
+            <td><%= tactical_equipment.model %></td>
+            <td><%= tactical_equipment.inventary %></td>
+            <td><%= tactical_equipment.serial %></td>
+            <td><%= tactical_equipment.quantity %></td>
+            <td><%= tactical_equipment.observations %></td>
+            <td><%= tactical_equipment.iph_id %></td>
+            <td><%= link_to 'Show', tactical_equipment %></td>
+        <td><%= link_to 'Edit', edit_tactical_equipment_path(tactical_equipment) %></td>
+        <td><%= link_to 'Destroy', tactical_equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

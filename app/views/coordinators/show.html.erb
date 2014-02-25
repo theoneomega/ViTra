@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to coordinators_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_coordinator_path(@coordinator), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show coordinator</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Id:</dt>
+  <dd><%= @coordinator.id %></dd>
+
+  <dt>First name:</dt>
+  <dd><%= @coordinator.first_name %></dd>
+
+  <dt>Last name1:</dt>
+  <dd><%= @coordinator.last_name1 %></dd>
+
+  <dt>Last name2:</dt>
+  <dd><%= @coordinator.last_name2 %></dd>
+
+</dl>

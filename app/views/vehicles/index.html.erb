@@ -1,0 +1,59 @@
+<div class="page-header">
+  <%= link_to new_vehicle_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Vehicle
+  <% end %>
+  <h1>Listing vehicles</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>Kind</th>
+            <th>Brand</th>
+            <th>Sub brand</th>
+            <th>Vehicle year</th>
+            <th>Plate</th>
+            <th>Color</th>
+            <th>Engine serial</th>
+            <th>Serial number</th>
+            <th>Usage</th>
+            <th>Capacity</th>
+            <th>Precedence</th>
+            <th>Company</th>
+            <th>Load capacity</th>
+            <th>Observations</th>
+            <th>Iph</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @vehicles) do |vehicle| %>
+            <td><%= vehicle.id %></td>
+            <td><%= vehicle.kind_id %></td>
+            <td><%= vehicle.brand_id %></td>
+            <td><%= vehicle.sub_brand_id %></td>
+            <td><%= vehicle.vehicle_year %></td>
+            <td><%= vehicle.plate %></td>
+            <td><%= vehicle.color %></td>
+            <td><%= vehicle.engine_serial %></td>
+            <td><%= vehicle.serial_number %></td>
+            <td><%= vehicle.usage %></td>
+            <td><%= vehicle.capacity %></td>
+            <td><%= vehicle.precedence %></td>
+            <td><%= vehicle.company %></td>
+            <td><%= vehicle.load_capacity %></td>
+            <td><%= vehicle.observations %></td>
+            <td><%= vehicle.iph_id %></td>
+            <td><%= link_to 'Show', vehicle %></td>
+        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

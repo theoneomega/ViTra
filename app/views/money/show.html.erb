@@ -1,0 +1,32 @@
+<div class="page-header">
+  <%= link_to money_index_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_money_path(@money), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show money</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Id:</dt>
+  <dd><%= @money.id %></dd>
+
+  <dt>Kind:</dt>
+  <dd><%= @money.kind %></dd>
+
+  <dt>Quantity:</dt>
+  <dd><%= @money.quantity %></dd>
+
+  <dt>Real money:</dt>
+  <dd><%= @money.real_money %></dd>
+
+  <dt>Observations:</dt>
+  <dd><%= @money.observations %></dd>
+
+  <dt>Iph:</dt>
+  <dd><%= @money.iph_id %></dd>
+
+</dl>

@@ -1,0 +1,28 @@
+<div class="page-header">
+  <%= link_to statuses_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Regresar
+  <% end %>
+  <%= link_to edit_status_path(@status), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <%= link_to new_status_path, :class => "btn btn-success" do %>
+    <span class="glyphicon glyphicon-plus"></span> Nuevo
+  <% end %>
+
+
+  <h1>Show status <%=@status.id%></h1>
+</div>
+
+<div class="jumbotron">
+
+<dl class="dl-horizontal">
+  <dt>Id:</dt>
+  <dd><%= @status.id %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @status.description %></dd>
+
+</dl>
+</div>

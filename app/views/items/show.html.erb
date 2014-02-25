@@ -1,0 +1,74 @@
+<div class="page-header">
+  <%= link_to items_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_item_path(@item), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show item</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Id:</dt>
+  <dd><%= @item.id %></dd>
+
+  <dt>Money:</dt>
+  <dd><%= @item.money %></dd>
+
+  <dt>Tactical equipment:</dt>
+  <dd><%= @item.tactical_equipment %></dd>
+
+  <dt>Documents:</dt>
+  <dd><%= @item.documents %></dd>
+
+  <dt>Kind:</dt>
+  <dd><%= @item.kind %></dd>
+
+  <dt>Quantity:</dt>
+  <dd><%= @item.quantity %></dd>
+
+  <dt>Real money:</dt>
+  <dd><%= @item.real_money %></dd>
+
+  <dt>Observations:</dt>
+  <dd><%= @item.observations %></dd>
+
+  <dt>Handcufs:</dt>
+  <dd><%= @item.handcufs %></dd>
+
+  <dt>Tactical vest:</dt>
+  <dd><%= @item.tactical_vest %></dd>
+
+  <dt>Anti gas mask:</dt>
+  <dd><%= @item.anti_gas_mask %></dd>
+
+  <dt>Binoculars:</dt>
+  <dd><%= @item.binoculars %></dd>
+
+  <dt>Ammunition clip:</dt>
+  <dd><%= @item.ammunition_clip %></dd>
+
+  <dt>Official uniform:</dt>
+  <dd><%= @item.official_uniform %></dd>
+
+  <dt>Brand:</dt>
+  <dd><%= @item.brand %></dd>
+
+  <dt>Model:</dt>
+  <dd><%= @item.model %></dd>
+
+  <dt>Inventary:</dt>
+  <dd><%= @item.inventary %></dd>
+
+  <dt>Serial:</dt>
+  <dd><%= @item.serial %></dd>
+
+  <dt>Document type:</dt>
+  <dd><%= @item.document_type %></dd>
+
+  <dt>Real document:</dt>
+  <dd><%= @item.real_document %></dd>
+
+</dl>

@@ -1,0 +1,91 @@
+<div class="page-header">
+  <%= link_to people_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_person_path(@person), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show person</h1>
+</div>
+<div class="jumbotron">
+  <dl class="dl-horizontal">
+    <dt>Id:</dt>
+    <dd><%= @person.id %></dd>
+
+    <dt>First name:</dt>
+    <dd><%= @person.first_name %></dd>
+
+    <dt>Last name1:</dt>
+    <dd><%= @person.last_name1 %></dd>
+
+    <dt>Last name2:</dt>
+    <dd><%= @person.last_name2 %></dd>
+
+    <dt>Alias:</dt>
+    <dd><%= @person.alias %></dd>
+
+    <dt>Nacionality:</dt>
+    <dd><%= @person.nacionality %></dd>
+
+    <dt>Ethni group:</dt>
+    <dd><%= @person.ethni_group %></dd>
+
+    <dt>Birth date:</dt>
+    <dd><%=I18n.l @person.birth_date, :format => "%d/%m/%Y" %></dd>
+
+    <dt>Age:</dt>
+    <dd><%= @person.age %></dd>
+
+    <dt>Rfc:</dt>
+    <dd><%= @person.rfc %></dd>
+
+    <dt>Sex:</dt>
+    <dd><%= @person.sex %></dd>
+
+    <dt>Domicile:</dt>
+    <dd><%= @person.domicile %></dd>
+
+    <dt>Status:</dt>
+    <dd><%= @person.status.description %></dd>
+
+    <dt>Residencial status:</dt>
+    <dd><%= @person.residencial_status %></dd>
+
+    <dt>Profession:</dt>
+    <dd><%= @person.profession %></dd>
+
+    <dt>Pupilage:</dt>
+    <dd><%= @person.pupilage %></dd>
+
+    <dt>Particular phone:</dt>
+    <dd><%= @person.particular_phone %></dd>
+
+    <dt>Mobile phone:</dt>
+    <dd><%= @person.mobile_phone %></dd>
+
+    <dt>Observations:</dt>
+    <dd><%= @person.observations %></dd>
+
+    <dt>Detention ubication:</dt>
+    <dd><%= @person.detention_ubication %></dd>
+
+    <dt>At disposal of:</dt>
+    <dd><%= @person.at_disposal_of %></dd>
+
+    <dt>Official qualifier:</dt>
+<%#*<dd><%= @person.official_qualifier.name %></dd>%>
+
+    <dt>Shift:</dt>
+    <dd><%= @person.shift %></dd>
+
+
+    <dt> Probables delitos</dt>
+    <% @person.crimes.each do |crime| %>
+    <dd> 
+    <%= crime.description %>
+    </dd>
+    <%end%>
+  </dl>
+</div>

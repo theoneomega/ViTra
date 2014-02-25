@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to new_coordinator_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Coordinator
+  <% end %>
+  <h1>Listing coordinators</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>First name</th>
+            <th>Last name1</th>
+            <th>Last name2</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @coordinators) do |coordinator| %>
+            <td><%= coordinator.id %></td>
+            <td><%= coordinator.first_name %></td>
+            <td><%= coordinator.last_name1 %></td>
+            <td><%= coordinator.last_name2 %></td>
+            <td><%= link_to 'Show', coordinator %></td>
+        <td><%= link_to 'Edit', edit_coordinator_path(coordinator) %></td>
+        <td><%= link_to 'Destroy', coordinator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

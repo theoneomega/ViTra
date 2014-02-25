@@ -1,0 +1,62 @@
+<div class="page-header">
+  <%= link_to vehicles_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_vehicle_path(@vehicle), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show vehicle</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Id:</dt>
+  <dd><%= @vehicle.id %></dd>
+
+  <dt>Kind:</dt>
+  <dd><%= @vehicle.kind_id %></dd>
+
+  <dt>Brand:</dt>
+  <dd><%= @vehicle.brand_id %></dd>
+
+  <dt>Sub brand:</dt>
+  <dd><%= @vehicle.sub_brand_id %></dd>
+
+  <dt>Vehicle year:</dt>
+  <dd><%= @vehicle.vehicle_year %></dd>
+
+  <dt>Plate:</dt>
+  <dd><%= @vehicle.plate %></dd>
+
+  <dt>Color:</dt>
+  <dd><%= @vehicle.color %></dd>
+
+  <dt>Engine serial:</dt>
+  <dd><%= @vehicle.engine_serial %></dd>
+
+  <dt>Serial number:</dt>
+  <dd><%= @vehicle.serial_number %></dd>
+
+  <dt>Usage:</dt>
+  <dd><%= @vehicle.usage %></dd>
+
+  <dt>Capacity:</dt>
+  <dd><%= @vehicle.capacity %></dd>
+
+  <dt>Precedence:</dt>
+  <dd><%= @vehicle.precedence %></dd>
+
+  <dt>Company:</dt>
+  <dd><%= @vehicle.company %></dd>
+
+  <dt>Load capacity:</dt>
+  <dd><%= @vehicle.load_capacity %></dd>
+
+  <dt>Observations:</dt>
+  <dd><%= @vehicle.observations %></dd>
+
+  <dt>Iph:</dt>
+  <dd><%= @vehicle.iph_id %></dd>
+
+</dl>

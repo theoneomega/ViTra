@@ -1,0 +1,25 @@
+<div class="page-header">
+  <%= link_to iphs_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <h1>New iph</h1>
+</div>
+
+<%= form_for(@iph, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @iph.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@iph.errors.count, "error") %> prohibited this iph from being saved:</h4>
+
+      <ul>
+        <% @iph.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%end%>
+
+
+<%= render 'form' %>

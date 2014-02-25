@@ -1,0 +1,116 @@
+<%= form_for(@vehicle, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @vehicle.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h4>
+
+      <ul>
+      <% @vehicle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :id, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :kind_id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :kind_id, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :brand_id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :brand_id, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :sub_brand_id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :sub_brand_id, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :vehicle_year, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :vehicle_year, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :plate, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :plate, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :color, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :color, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :engine_serial, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :engine_serial, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :serial_number, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :serial_number, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :usage, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :usage, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :capacity, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :capacity, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :precedence, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :precedence, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :company, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :company, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :load_capacity, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :load_capacity, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :observations, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :observations, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :iph_id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :iph_id, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

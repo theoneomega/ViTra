@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_sub_brand_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Sub brand
+  <% end %>
+  <h1>Listing sub_brands</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @sub_brands) do |sub_brand| %>
+            <td><%= sub_brand.id %></td>
+            <td><%= sub_brand.description %></td>
+            <td><%= sub_brand.brand_id %></td>
+            <td><%= link_to 'Show', sub_brand %></td>
+        <td><%= link_to 'Edit', edit_sub_brand_path(sub_brand) %></td>
+        <td><%= link_to 'Destroy', sub_brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

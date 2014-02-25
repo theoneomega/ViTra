@@ -5,7 +5,8 @@ class Person < ActiveRecord::Base
   attr_accessible :particular_phone, :profession, :pupilage, :residencial_status, :rfc
   attr_accessible :sex, :shift, :status_id, :crime_person_attributes
   belongs_to :official_qualifier
-  has_many :iph_person
+  #  has_many :iph_person
+  belongs_to :iph
   belongs_to :status
   
   

@@ -14,8 +14,10 @@ class Iph < ActiveRecord::Base
   belongs_to :suburb
   belongs_to :sector
   belongs_to :street
-  has_many :person
+  has_many :person, :dependent => :destroy
+  has_many :vehicles
   
   
+  accepts_nested_attributes_for :vehicles, :allow_destroy => true, reject_if: :all_blank
   accepts_nested_attributes_for :person, :allow_destroy => true, :reject_if => :all_blank
 end

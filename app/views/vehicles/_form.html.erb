@@ -5,29 +5,23 @@
       <h4><%= pluralize(@vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h4>
 
       <ul>
-      <% @vehicle.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @vehicle.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= f.label :id, :class => "col-sm-2 control-label" %>
+    <%= f.label :kind_id, "Tipo", :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :id, :class => "form-control" %>
+      <%= f.collection_select(:kind_id, Kind.all, :id, :description, {:prompt => "SELECCIONE"})%>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :kind_id, :class => "col-sm-2 control-label" %>
+    <%= f.label :brand_id, "Marca", :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :kind_id, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :brand_id, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :brand_id, :class => "form-control" %>
+      <%= f.collection_select(:brand_id, Brand.all, :id, :description) %>
     </div>
   </div>
   <div class="form-group">
@@ -114,3 +108,34 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  $('#iph_district_id').change(function() {
+    $('#iph_sector_id').empty();
+    $.ajax({
+      url: "/iphs/get_sectors?id=" + this.value,
+      dataType: 'jsonp',
+      error: function(xhr, status, error) {
+        alert(status);
+      },
+      success: setModels
+    });
+
+    function setModels(models) {
+      var dropdown = document.getElementById("iph_sector_id");
+      if (dropdown) {
+        for (var i = 0; i < models.length; ++i) {
+          createOption(dropdown, models[i].description, models[i].id);
+        }
+      }
+    }
+
+    function createOption(dropdown, text, value) {
+      var opt = document.createElement('option');
+      opt.value = value;
+      opt.text = text;
+      dropdown.options.add(opt);
+    }
+  });
+
+</script>

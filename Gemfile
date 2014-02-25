@@ -5,8 +5,10 @@ gem 'rails', '3.2.16'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+
 #gem 'sqlite3'
 gem 'seed_dump'
+
 gem "nested_form"
 gem 'rails3-jquery-autocomplete'
 gem "jquery-ui-rails"
@@ -14,8 +16,8 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-generators'
-gem 'ruby-oci8', '= 2.1.6'
-gem 'activerecord-oracle_enhanced-adapter','~> 1.4.0'
+#gem 'ruby-oci8', '= 2.1.6'
+#gem 'activerecord-oracle_enhanced-adapter','~> 1.4.0'
 #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'https://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'bootstrap-datetimepicker-rails'
 

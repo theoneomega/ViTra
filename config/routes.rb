@@ -2,7 +2,7 @@ ViTra::Application.routes.draw do
   resources :official_qualifiers
 
   get 'iphs/get_sectors'
-  
+  get 'vehicles/get_sub_brands'
   
 
   

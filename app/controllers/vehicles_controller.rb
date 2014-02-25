@@ -80,4 +80,10 @@ class VehiclesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def get_sub_brands
+    p"Entro"
+    @sub_brand = SubBrand.where(:brand_id => params[:id])
+    render json: @sub_brand, :callback => params[:callback] 
+  end
 end

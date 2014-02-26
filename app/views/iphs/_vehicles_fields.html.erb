@@ -1,7 +1,158 @@
-<%#
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-%>
+<div class="panel panel-info">
+  <div class="panel-heading"> Vehiculo</div>
+  <div class="panel-body">
 
-<%= "_vehicles_fields.html" %>
+    <div class="form-group">
+      <%= f.label :kind_id, "Tipo", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:kind_id, Kind.all, :id, :description, {:prompt => "SELECCIONE"}, :id => "tipo")%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :brand_id, "Marca", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:brand_id, Brand.all, :id, :description, {:prompt => "SELECIONE MARCA"},:onchange => 'getColumnId(this);') %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :sub_brand_id, "Linea", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.select(:sub_brand_id, []) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :vehicle_year, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :vehicle_year, :class => "form-control datePicker" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :plate, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :plate, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :color, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :color, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :engine_serial, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :engine_serial, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :serial_number, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :serial_number, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :usage, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :usage, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :capacity, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :capacity, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :precedence, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :precedence, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :company, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :company, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :load_capacity, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :load_capacity, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :observations, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_area :observations, :class => "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.link_to_remove "Remover vehiculo", :class => "btn btn-primary" %>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<script>
+
+  $(function() {
+    $('.datePicker').each(function() {
+      $(this).datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true,
+        yearRange: '-100:+0'});
+    });
+  });
+
+  function getColumnId(column) {
+    var column_id = column.id.replace(/[a-z_]/gi, "");
+    brand_id = "iph_vehicles_attributes_" + column_id + "_brand_id";
+    sub_brand_id = "iph_vehicles_attributes_" + column_id + "_sub_brand_id";
+
+    $.ajax({
+      url: "/vehicles/get_sub_brands?id=" + document.getElementById(brand_id).value,
+      dataType: 'jsonp',
+      error: function(xhr, status, error) {
+        alert(status);
+      },
+      success: setModels
+    });
+
+    function setModels(models) {
+<%#*alert(sub_brand_id);%>
+      var dropdown = document.getElementById(sub_brand_id);
+      if (dropdown) {
+        for (var i = 0; i < models.length; ++i) {
+          createOption(dropdown, models[i].description, models[i].id);
+        }
+      }
+    }
+
+    function createOption(dropdown, text, value) {
+      var opt = document.createElement('option');
+      opt.value = value;
+      opt.text = text;
+      dropdown.options.add(opt);
+    }
+  }
+
+
+
+
+
+
+
+
+  $("#tipo").change(function() {
+    alert("Handler for .change() called.");
+  });
+
+
+  function mialert() {
+    alert("alerta de funcion");
+  }
+
+</script>

@@ -16,8 +16,8 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-generators'
-#gem 'ruby-oci8', '= 2.1.6'
-#gem 'activerecord-oracle_enhanced-adapter','~> 1.4.0'
+gem 'ruby-oci8', '= 2.1.6'
+gem 'activerecord-oracle_enhanced-adapter','~> 1.4.0'
 #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'https://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'bootstrap-datetimepicker-rails'
 

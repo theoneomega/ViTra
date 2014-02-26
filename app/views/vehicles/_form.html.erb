@@ -27,13 +27,13 @@
   <div class="form-group">
     <%= f.label :sub_brand_id, :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.select(:sub_brand_id , []) %>
+      <%= f.select(:sub_brand_id, []) %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :vehicle_year, :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.date_select :vehicle_year, :class => "form-control" %>
+      <%= f.text_field :vehicle_year, :class => "form-control datePicker" %>
     </div>
   </div>
   <div class="form-group">
@@ -110,6 +110,14 @@
 <% end %>
 
 <script>
+
+  $(function() {
+    $('.datePicker').each(function() {
+      $(this).datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true,
+        yearRange: '-100:+0'});
+    });
+  });
+
   $('#vehicle_brand_id').change(function() {
     $('#vehicle_sub_brand_id').empty();
     $.ajax({
@@ -121,6 +129,7 @@
       success: setModels
     });
 
+    <%#*document.getElementsByName()%>
     function setModels(models) {
       var dropdown = document.getElementById("vehicle_sub_brand_id");
       if (dropdown) {
@@ -137,5 +146,10 @@
       dropdown.options.add(opt);
     }
   });
+
+  function getColumnId(column) {
+    var column_id = column.id.replace(/[a-z_]/gi, "");
+    column.id = class_name + column_id;
+  }
 
 </script>

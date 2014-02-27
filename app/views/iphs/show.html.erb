@@ -21,55 +21,55 @@
   <!-- Default panel contents -->
   <div class="panel-heading">Datos generales</div>
   <div class="panel-body">
-    <p>
-      <strong>Folio</strong> 
-    <u><%= @iph.id %></u>
+    <p style="padding-left:1em">
+      <b  >Folio</b> 
+    <u ><%= @iph.id %></u>
 
-    <strong>Numero de oficio</strong>
-    <u><%= @iph.office_number %></u>
+    <b>Numero de oficio</b>
+    <u ><%= @iph.office_number %></u>
 
-    <strong>Fecha y hora del evento</strong>
-    <u><%=I18n.l @iph.event_date, :format => "%d de %B del %Y a las %H:%M hrs" %></u>
+    <b  >Fecha y hora del evento</b>
+    <u ><%=I18n.l @iph.event_date, :format => "%d de %B del %Y a las %H:%M hrs" %></u>
     </p>
-    <p>
-      <strong>Numero Ece. Transporte</strong>
-    <u><%= @iph.officer.patrol.description %></u>
+    <p style="padding-left:1em">
+      <b  >Numero Ece. Transporte</b>
+    <u ><%= @iph.officer.patrol.description %></u>
 
-    <strong>No. de Oficial</strong>
-    <u><%= @iph.officer.id %></u>
+    <b  >No. de Oficial</b>
+    <u ><%= @iph.officer.id %></u>
     </p>
     <p>
-      <strong>Motivo</strong>
-    <u><%= @iph.infraction.description %></u>
+      <b >Motivo</b>
+    <u ><%= @iph.infraction.description %></u>
     </p>
     <p>
-      <strong>Dirigido a</strong>
-    <u><%= @iph.addressed_to %></u>
+      <b >Dirigido a</b>
+    <u ><%= @iph.addressed_to %></u>
     </p>
     <p>
-      <strong>Oficial</strong>
-    <u><%= @iph.officer.name %></u>
+      <b >Oficial</b>
+    <u ><%= @iph.officer.name %></u>
     </p>
     <p>
-      <strong>Operativo</strong>
+      <b >Operativo</b>
 
       <%if !@iph.operative%>
-      <u>   NO   </u>          
+      <u >   NO   </u>          
     <%else %>
-      <u> SI</u>
+      <u > SI</u>
 
-      <strong>Nombre del Operativo</strong>
-      <u><%= @iph.operative_name %></u>
+      <b >Nombre del Operativo</b>
+      <u ><%= @iph.operative_name %></u>
 
     <%  end %>
     </p>
     <p>
-      <strong>Nombre del coordinador  </strong>
-    <u><%= @iph.coordinator.name %></u>
+      <b >Nombre del coordinador  </b>
+    <u ><%= @iph.coordinator.name %></u>
     </p>
     <p>
-      <strong>Nombre del Comandante en turno  </strong>
-    <u><%= @iph.commander.name %></u>
+      <b >Nombre del Comandante en turno  </b>
+    <u ><%= @iph.commander.name %></u>
     </p>
   </div>
 
@@ -79,62 +79,62 @@
   </ul>
   <div class="panel-body">
     <p>
-      <strong>Estado</strong>
-    <u><%= @iph.state %></u>
+      <b >Estado</b>
+    <u ><%= @iph.state %></u>
 
-    <strong>Municipio</strong>
-    <u><%= @iph.township.description %></u>
+    <b >Municipio</b>
+    <u ><%= @iph.township.description %></u>
     </p>
     <p>
-      <strong>Distrito</strong>
-    <u><%= @iph.district.description %></u>
+      <b >Distrito</b>
+    <u ><%= @iph.district.description %></u>
 
-    <strong>Sector</strong>
-    <u><%= @iph.sector.description %></u>
+    <b >Sector</b>
+    <u ><%= @iph.sector.description %></u>
 
-    <strong>Turno</strong>
-    <u><%= @iph.shift %></u>
+    <b >Turno</b>
+    <u ><%= @iph.shift %></u>
     </p>
     <p>
-      <strong>Localidad</strong>
-    <u><%= @iph.township.description %></u>
-    <strong>Colonia</strong>
-    <u><%= @iph.suburb.description %></u>
+      <b >Localidad</b>
+    <u ><%= @iph.township.description %></u>
+    <b >Colonia</b>
+    <u ><%= @iph.suburb.description %></u>
     </p>
     <p>
-      <strong>Calle</strong>
-    <u><%= @iph.street.description %></u>
+      <b >Calle</b>
+    <u ><%= @iph.street.description %></u>
 
-    <strong>Numero Interior</strong>
-    <u><%= @iph.interior_number %></u>
+    <b >Numero Interior</b>
+    <u ><%= @iph.interior_number %></u>
 
-    <strong>Numero exterior</strong>
-    <u><%= @iph.exterior_number %></u>
+    <b >Numero exterior</b>
+    <u ><%= @iph.exterior_number %></u>
 
-    <strong>Codigo postal</strong>
-    <u><%= @iph.zip %></u>
+    <b >Codigo postal</b>
+    <u ><%= @iph.zip %></u>
     </p>
 
     <p>
-      <strong>Between streets:</strong>
-    <u><%= @iph.between_streets %></u>
+      <b >Between streets:</b>
+    <u ><%= @iph.between_streets %></u>
     </p>
     <p>
-      <strong>References:</strong>
-    <u><%= @iph.references %></u>
+      <b >References:</b>
+    <u ><%= @iph.references %></u>
     </p>
     <p>
-      <strong>Tramo carretero</strong>
+      <b >Tramo carretero</b>
       <% if !@iph.road %>
 
-      <u>NO</u>
+      <u >NO</u>
     <%else%>
-      <u>SI</u>
+      <u >SI</u>
 
-      <strong>Tramo carretero</strong>
-      <u><%= @iph.road_name %></u>
-      <strong>Kilometro</strong>
-      <u><%= @iph.kilometer %></u>
+      <b >Tramo carretero</b>
+      <u ><%= @iph.road_name %></u>
+      <b >Kilometro</b>
+      <u ><%= @iph.kilometer %></u>
 
     <%end%>
 
@@ -146,7 +146,7 @@
   </ul>
   <div class="panel-body">
     <p>
-      <b><%= @iph.facts_description %></b>
+      <b ><%= @iph.facts_description %></b>
     </p>
   </div>
 
@@ -159,40 +159,40 @@
     </ul>
     <div class="panel-body">
       <p>
-        <strong>Apellido Paterno</strong>
-      <u><%= person.last_name1 %></u>
-      <strong>Apellido Materno</strong>
-      <u><%= person.last_name2 %></u>
-      <strong>Nombre(s)</strong>
-      <u><%= person.first_name %></u>
+        <b >Apellido Paterno</b>
+      <u ><%= person.last_name1 %></u>
+      <b >Apellido Materno</b>
+      <u ><%= person.last_name2 %></u>
+      <b >Nombre(s)</b>
+      <u ><%= person.first_name %></u>
       </p>
       <p>
-        <strong>Alias</strong>
-      <u><%= person.alias %></u>
-      <strong>Nacionalidad </strong>
-      <u><%= person.nacionality %></u>
-      <strong>Grupo Étnico </strong>
-      <u><%= person.ethni_group %></u>
+        <b >Alias</b>
+      <u ><%= person.alias %></u>
+      <b >Nacionalidad </b>
+      <u ><%= person.nacionality %></u>
+      <b >Grupo Étnico </b>
+      <u ><%= person.ethni_group %></u>
       </p>
       <p>
-        <strong>Fecha de Nacimiento</strong>
-      <u><%= person.birth_date %></u>
-      <strong>Edad</strong>
-      <u><%= person.age %></u>
-      <strong>RFC</strong>
-      <u><%= person.rfc %></u>
-      <b>Sexo</b>
-      <u><%= person.sex %></u>
+        <b >Fecha de Nacimiento</b>
+      <u ><%= person.birth_date %></u>
+      <b >Edad</b>
+      <u ><%= person.age %></u>
+      <b >RFC</b>
+      <u ><%= person.rfc %></u>
+      <b >Sexo</b>
+      <u ><%= person.sex %></u>
       </p>
       <p>
-        <strong>Domicilio</strong>
-      <u><%= person.domicile %></u>
+        <b >Domicilio</b>
+      <u ><%= person.domicile %></u>
       </p>
       <p>
-        <strong>Clasificacion</strong>
-      <u><%= person.status.description %></u>
-      <strong>Grupo Étnico </strong>
-      <u><%= person.residencial_status %></u>
+        <b >Clasificacion</b>
+      <u ><%= person.status.description %></u>
+      <b >Grupo Étnico </b>
+      <u ><%= person.residencial_status %></u>
       </p>
     </div>
 
@@ -213,21 +213,21 @@
     <div class="panel-body">
 
       <p>
-        <b>Ocupación</b>
-      <u><%= person.profession %> </u>
+        <b >Ocupación</b>
+      <u ><%= person.profession %> </u>
 
-      <b>Escolaridad</b>
-      <u><%= person.pupilage %> </u>
+      <b >Escolaridad</b>
+      <u ><%= person.pupilage %> </u>
       </p>
       <p>
-        <b>Teléfono particular</b>
-      <u><%= person.particular_phone %> </u>
-      <b>Teléfono celular</b>
-      <u><%= person.mobile_phone %> </u>
+        <b >Teléfono particular</b>
+      <u ><%= person.particular_phone %> </u>
+      <b >Teléfono celular</b>
+      <u ><%= person.mobile_phone %> </u>
       </p>
       <p>
-        <b>Observaciones</b>
-      <u><%= person.observations %> </u>
+        <b >Observaciones</b>
+      <u ><%= person.observations %> </u>
       </p>
     </div>
 
@@ -237,20 +237,64 @@
       </ul>
       <div class="panel-body">
         <p>
-          <b>Motivo de la detencion</b>
-        <u> <%= @iph.infraction.description %></u>
+          <b >Motivo de la detencion</b>
+        <u > <%= @iph.infraction.description %></u>
 
         </p>
       </div>
     <% end %>
   <%end%>
+  <% @iph.vehicles.each do |vehicle| %>
+    <ul class="list-group ">
+      <a class="list-group-item active">Vehiculo  <%=vehicle.id%></a>
+    </ul>
+    <div class="panel-body">
+      <p>
+        <b >Tipo</b>
+      <u ><%= vehicle.kind.description %></u>
+      <b >Marca </b>
+      <u ><%= vehicle.brand.description %></u>
+      <b >Linea</b>
+      <u ><%= vehicle.sub_brand.description %></u>
+      <b >Modelo </b>
+      <u ><%=I18n.l vehicle.vehicle_year, :format => "%Y" %></u>
+      </p>
+      <p>
+        <b >Matricula</b>
+      <u ><%= vehicle.plate %></u>
+      <b >Color </b>
+      <u ><%= vehicle.color %></u>
+      <b >Numero motor</b>
+      <u ><%= vehicle.engine_serial %></u>
+      </p>
+      <p>
+        <b >Numero de serie</b>
+      <u ><%= vehicle.serial_number %></u>
+      <b >Uso </b>
+      <u ><%= vehicle.usage %></u>
+      <b >Capacidad de pasajeros</b>
+      <u ><%= vehicle.capacity %></u>
+      </p>
 
-  <ul class="list-group ">
-    <a class="list-group-item active">Vehiculos involucrados</a>
-  </ul>
-  <div class="panel-body">
-    <p> datos datos datod </p>
-  </div>
+      <p>
+        <b >Procedencia</b>
+      <u ><%= vehicle.precedence %></u>
+      <b >Empresa </b>
+      <u ><%= vehicle.company %></u>
+      <b >Capacidad de carga</b>
+      <u ><%= vehicle.load_capacity %></u>
+      </p>
+      <p>
+      <b >Observaciónes</b>
+      <u ><%= vehicle.observations %></u>
+      </p>
+
+
+
+    </div>
+  <%end%>
 </div>
-<%= link_to_function('<i class="icon icon-print">Imprimir</i>'.html_safe, "javascript:print()", :class => "btn btn-primary")  %>
+
+
+<%= link_to_function('<i class="icon icon-print">Imprimir</i>'.html_safe, "javascript:print()", :class => "btn btn-warning")  %>
 

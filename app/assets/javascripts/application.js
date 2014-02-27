@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require jquery.min
 //= require bootstrap
-//= require_tree .
+
 //= require jquery.ui.all
 //= require autocomplete-rails
-//= require jquery_nested_form

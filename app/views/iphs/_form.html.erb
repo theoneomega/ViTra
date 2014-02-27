@@ -1,177 +1,172 @@
 <%= nested_form_for(@iph, :html => { :class => "form-horizontal" }) do |f| %>
-  <% if @iph.errors.any? %>
-    <div class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@iph.errors.count, "error") %> prohibited this iph from being saved:</h4>
+  <div class="panel panel-info">
+    <div class="panel-heading"> Datos generales</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <%= f.label :officer_id, "No. de Oficial", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:officer_id, Officer.all, :id, :name, {:prompt => "SELECCIONE OFICIAL"} )%>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :office_number, "No. de Oficio", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :office_number, :class => "form-control" %>
+        </div>
+      </div>
 
-      <ul>
-        <% @iph.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="form-group">
+        <%= f.label :infraction_id, "Motivo", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:infraction_id, Infraction.all, :id, :description, {:prompt => "SELECCIONE"}) %>
+        </div>
+      </div>
 
-
-  <div class="form-group">
-    <%= f.label :officer_id, "No. de Oficial", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select(:officer_id, Officer.all, :id, :name )%>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :office_number, "No. de Oficio", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :office_number, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :infraction_id, "Motivo", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select(:infraction_id, Infraction.all, :id, :description) %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :addressed_to, "Dirigido a", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :addressed_to, :class => "form-control", :value => "Comisario Raul Avila Ibarra", :readonly => true %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :operative, "Operativo", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.check_box :operative, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group" id="operativo">
-    <%= f.label :operative_name, "Nombre del Operativo", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :operative_name, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :event_date, "Fecha y hora del evento", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :event_date, :class => "form-control", :readonly => true %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :coordinator_id, "Nombre del Coordinador", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select( :coordinator_id, Coordinator.all, :id, :name) %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :commander_id, "Nombre del Comandante en Turno", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select(:commander_id, Commander.all, :id, :name) %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :state, "Estado", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :state, :class => "form-control", :value => "Chihuahua", :readonly => true %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :township_id, "Municipio", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select(:township_id, Township.all, :id, :description, :class => "form-control") %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :district_id, "Distrito", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+      <div class="form-group">
+        <%= f.label :addressed_to, "Dirigido a", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :addressed_to, :class => "form-control", :value => "Comisario Raul Avila Ibarra", :readonly => true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :operative, "Operativo", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.check_box :operative, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group" id="operativo">
+        <%= f.label :operative_name, "Nombre del Operativo", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :operative_name, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :event_date, "Fecha y hora del evento", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :event_date, :class => "form-control", :readonly => true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :coordinator_id, "Nombre del Coordinador", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.collection_select( :coordinator_id, Coordinator.all, :id, :name) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :commander_id, "Nombre del Comandante en Turno", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:commander_id, Commander.all, :id, :name) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :state, "Estado", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :state, :class => "form-control", :value => "Chihuahua", :readonly => true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :township_id, "Municipio", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:township_id, Township.all, :id, :description, :class => "form-control") %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :district_id, "Distrito", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
   <%#= f.collection_select(:district_id, District.all, :id, :description, :placeholder => "seleccione el estatus") %>
-      <%= f.collection_select(:district_id, District.all, :id, :description, {:prompt => "SELECCIONE DISTRITO"})%>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :sector_id, "Sector", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.select(:sector_id, []) %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :shift, "Turno", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.select(:shift,["MATUTINO","VESPERTINO","NOCTURNO"]) %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :suburb_id,"Colonia", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select(:suburb_id, Suburb.order("description ASC").all, :id, :description, :class => "form-control") %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :street_id, "Calle", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select(:street_id, Street.order("description ASC").all, :id, :description) %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :exterior_number, "Numero exterior", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :exterior_number, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :interior_number, "Numero interior", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :interior_number, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :zip, "Codigo Postal", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :zip, :class => "form-control", :in => 31000...33000, :message => "invalid fundays" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :between_streets, "Entre que calles", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :between_streets, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :references, "Referencias", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :references, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :road, "Caminos", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.check_box :road, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group" id="tramo">
-    <%= f.label :road_name,"Tramo carretero", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :road_name, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group" id="kilometro" >
-    <%= f.label :kilometer, "Kilometro", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :kilometer, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :facts_description, "Descripción de los hechos", :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_area :facts_description, :class => "form-control" %>
-    </div>
-  </div>
+          <%= f.collection_select(:district_id, District.all, :id, :description, {:prompt => "SELECCIONE DISTRITO"})%>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :sector_id, "Sector", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.select(:sector_id, []) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :shift, "Turno", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.select(:shift,["MATUTINO","VESPERTINO","NOCTURNO"]) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :suburb_id,"Colonia", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:suburb_id, Suburb.order("description ASC").all, :id, :description, :class => "form-control") %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :street_id, "Calle", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.collection_select(:street_id, Street.order("description ASC").all, :id, :description) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :exterior_number, "Numero exterior", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :exterior_number, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :interior_number, "Numero interior", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :interior_number, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :zip, "Codigo Postal", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :zip, :class => "form-control", :in => 31000...33000, :message => "invalid fundays" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :between_streets, "Entre que calles", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :between_streets, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :references, "Referencias", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :references, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :road, "Caminos", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.check_box :road, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group" id="tramo">
+        <%= f.label :road_name,"Tramo carretero", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :road_name, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group" id="kilometro" >
+        <%= f.label :kilometer, "Kilometro", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :kilometer, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :facts_description, "Descripción de los hechos", :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_area :facts_description, :class => "form-control" %>
+        </div>
+      </div>
 
-
-
+    </div>
+  </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-user-add-1">   Agregar persona</i>'.html_safe, :person, :class => "btn btn-primary" %>
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-user-add-1">   Agregar persona</i>'.html_safe, :person, :class => "btn btn-success" %>
+    </div>
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-truck">  Agregar Vehiculo</i>'.html_safe, :vehicles, :class => "btn btn-success" %>
+    </div>
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-beaker">  Agregar Drogas</i>'.html_safe, :drugs, :class => "btn btn-success" %>
     </div>
   </div>
   <p>
@@ -179,11 +174,9 @@
       <%= render 'people_fields', :f => builder %>
     <%end%>
   </p>
-  
+
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-truck">   Agregar Vehiculo</i>'.html_safe, :vehicles, :class => "btn btn-primary" %>
-    </div>
+    
   </div>
   <p>
     <%=f.fields_for :vehicles do |builder| %>
@@ -191,16 +184,24 @@
     <%end%>
   </p>
 
+
+  <p>
+    <%=f.fields_for :drugs do |builder| %>
+      <%= render 'drugs_fields', :f => builder %>
+    <%end%>
+  </p>
+
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-10">
       <%= f.submit :class => "btn btn-primary" %>
     </div>
   </div>
 <% end %>
-<script type="text/javascript" src="/assets/jquery-1.5.1.min.js"></script>
-<script type="text/javascript" src="/assets/jquery-ui-1.8.13.custom.min.js"></script>
-<script type="text/javascript" src="/assets/jquery-ui-timepicker-addon.js"></script>
-<script type="text/javascript" src="/assets/jquery.ui.datepicker-es.js"></script>
 
 <script type="text/javascript">
   $(function() {
@@ -231,9 +232,6 @@
         $("#tramo").fadeOut(0);
       }
     });
-
-
-
   });
 
   $('#iph_district_id').change(function() {

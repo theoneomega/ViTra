@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to iphs_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+  <%= link_to iphs_path, :class => 'btn btn-danger' do %>
+    <span class="icon icon-back"></span>
+    Regresar
   <% end %>
-  <h1>New iph</h1>
+  <h1><%=t(:new) %> <%=t(:iph) %></h1>
 </div>
 
 <%= form_for(@iph, :html => { :class => "form-horizontal" }) do |f| %>

@@ -1,4 +1,12 @@
 es:
+  helpers:
+      select:
+        prompt: Por favor selecciona
+      submit:
+        create: Crear %{model}
+        submit: Guardar %{model}
+        update: Actualizar %{model}  
+  new: Nuevo
   time:
     formats:
       corto: ! '%D DE M'
@@ -20,8 +28,29 @@ es:
   updated: "La %{model} fue actualizado correctamente."
   destroyed: "La %{model} fue eliminado correctamente." 
   activerecord:
+    errors:
+        template:
+          header:
+            one: "1 error evitó que este elemento ( %{model}) fuera registrado:"
+            other: "%{count} errores evitaron que este elemento ( %{model}) fuera registrado:"
+          body: "Se encontraron problemas con los siguientes campos:"
+        messages:
+          invalid_attachment_size: "esta fuera del limite (2mb), Elija un archivo diferente."
+          invalid_attachment_content_type: "error, solo los archivos de imagen (jpg/jpeg/png/gif/bmp) son permitidos."
+          taken: "registro ya existente."
+          invalid: "campo inválido."
+          blank: "no puede ser un campo vacío."
+          too_short: "valor demasiado corto."
+          too_long: "valor demasiado largo."
+          not_a_number: "no es un valor numerico."
     attributes:
-      iph_images:
+      iph:
+        officer_id: No. de Oficial
+        infraction_id: Motivo
+        coordinator_id: Nombre del coordinador
+        commander_id: Nombre del Comandante en turno
+        sector_id: Sector
+        district_id: Distrito
         name: Nombre
         event_date: Fecha y hora
         id: Folio

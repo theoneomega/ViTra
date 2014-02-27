@@ -21,67 +21,67 @@
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :vehicle_year, :class => "col-sm-2 control-label" %>
+      <%= f.label :vehicle_year, "Modelo", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.text_field :vehicle_year, :class => "form-control datePicker" %>
+        <%= f.date_select :vehicle_year, {:start_year => Time.now.year, :end_year => Time.now.year - 95, :discard_day => true, :discard_month => true} %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :plate, :class => "col-sm-2 control-label" %>
+      <%= f.label :plate, "Matricula", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_field :plate, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :color, :class => "col-sm-2 control-label" %>
+      <%= f.label :color, "Color", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_field :color, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :engine_serial, :class => "col-sm-2 control-label" %>
+      <%= f.label :engine_serial, "Numero de motor", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_field :engine_serial, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :serial_number, :class => "col-sm-2 control-label" %>
+      <%= f.label :serial_number, "Numero de serie", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_field :serial_number, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :usage, :class => "col-sm-2 control-label" %>
+      <%= f.label :usage, "Uso", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_field :usage, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :capacity, :class => "col-sm-2 control-label" %>
+      <%= f.label :capacity, "Capacidad de pasajeros", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.number_field :capacity, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :precedence, :class => "col-sm-2 control-label" %>
+      <%= f.label :precedence, "Procedencia", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.text_field :precedence, :class => "form-control" %>
+        <%= f.select(:precedence, ["NACIONAL","IMPORTADO","EXTRANJERO"]) %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :company, :class => "col-sm-2 control-label" %>
+      <%= f.label :company, "Empresa", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_field :company, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :load_capacity, :class => "col-sm-2 control-label" %>
+      <%= f.label :load_capacity, "Capacidad de carga", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.number_field :load_capacity, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :observations, :class => "col-sm-2 control-label" %>
+      <%= f.label :observations, "Observaciones", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_area :observations, :class => "form-control" %>
       </div>
@@ -89,7 +89,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <%= f.link_to_remove "Remover vehiculo", :class => "btn btn-primary" %>
+        <%= f.link_to_remove '<i class="icon icon-trash"></i>Remover vehiculo'.html_safe, :class => "btn btn-danger" %>
       </div>
     </div>
 
@@ -111,7 +111,7 @@
     var column_id = column.id.replace(/[a-z_]/gi, "");
     brand_id = "iph_vehicles_attributes_" + column_id + "_brand_id";
     sub_brand_id = "iph_vehicles_attributes_" + column_id + "_sub_brand_id";
-
+    $("#" + sub_brand_id).empty();
     $.ajax({
       url: "/vehicles/get_sub_brands?id=" + document.getElementById(brand_id).value,
       dataType: 'jsonp',
@@ -139,20 +139,5 @@
     }
   }
 
-
-
-
-
-
-
-
-  $("#tipo").change(function() {
-    alert("Handler for .change() called.");
-  });
-
-
-  function mialert() {
-    alert("alerta de funcion");
-  }
 
 </script>

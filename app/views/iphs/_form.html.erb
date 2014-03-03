@@ -162,12 +162,6 @@
     <div class="col-sm-2 col-sm-10">
       <%= f.link_to_add '<i class="icon icon-user-add-1">   Agregar persona</i>'.html_safe, :person, :class => "btn btn-success" %>
     </div>
-    <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-truck">  Agregar Vehiculo</i>'.html_safe, :vehicles, :class => "btn btn-success" %>
-    </div>
-    <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-beaker">  Agregar Drogas</i>'.html_safe, :drugs, :class => "btn btn-success" %>
-    </div>
   </div>
   <p>
     <%=f.fields_for :person do |builder| %>
@@ -176,7 +170,9 @@
   </p>
 
   <div class="form-group">
-    
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-truck">  Agregar Vehiculo</i>'.html_safe, :vehicles, :class => "btn btn-success" %>
+    </div>
   </div>
   <p>
     <%=f.fields_for :vehicles do |builder| %>
@@ -192,7 +188,20 @@
   </p>
 
   <div class="form-group">
-    
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-beaker">  Agregar Drogas</i>'.html_safe, :drugs, :class => "btn btn-success" %>
+    </div>
+  </div>
+  <p>
+    <%=f.fields_for :weapons do |builder| %>
+      <%= render 'weapons_fields', :f => builder %>
+    <%end%>
+  </p>
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-target-3">  Agregar Armas</i>'.html_safe, :weapons, :class => "btn btn-success" %>
+    </div>
   </div>
 
 
@@ -207,7 +216,6 @@
   $(function() {
     $('#iph_event_date').timepicker();
   });
-
 
   $(document).ready(function() {
     $("#operativo").fadeOut(0);

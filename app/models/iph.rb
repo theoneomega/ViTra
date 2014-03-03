@@ -18,6 +18,7 @@ class Iph < ActiveRecord::Base
   has_many :person, :dependent => :destroy
   has_many :vehicles
   has_many :drugs
+  has_many :weapons
   
   validates :officer_id, :presence => true
   validates :infraction_id, :presence => true
@@ -31,4 +32,5 @@ class Iph < ActiveRecord::Base
   accepts_nested_attributes_for :vehicles, :allow_destroy => true, reject_if: :all_blank
   accepts_nested_attributes_for :person, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :drugs, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :weapons, :allow_destroy => true, :reject_if => :all_blank
 end

@@ -3,7 +3,7 @@ es:
       select:
         prompt: Por favor selecciona
       submit:
-        create: Crear %{model}
+        create: Registrar %{model}
         submit: Guardar %{model}
         update: Actualizar %{model}  
   new: Nuevo
@@ -59,11 +59,40 @@ es:
         last_name1: Apellido paterno
         last_name2: Apellido materno
         status_id: Estatus
+        nacionality: Nacionalidad
+        ethni_group: Grupo Étnico
+        birth_date: Fecha de nacimiento
+        age: Edad
+        sex: Sexo
+        domicile: Domicilio
+        residencial_status: Estatus Residencial
+        profession: Profesión
+        pupilage: Escolaridad
+        particular_phone: Teléfono particular
+        mobile_phone: Teléfono Celular
+        observations: Observaciones
+        detention_ubication: Ubicación del detenido
+        at_disposal_of: Autoridad a la que fue puesta a disposicioń
+        official_qualifier_id: Oficial Calificador
+        shift: Turno
+      tactical_equipment:
+          kind: Tipo
+          brand: Marca
+          model: Modelo
+          inventary: Inventario
+          serial: Numero de Serie
+          quantity: Cantidad
+          observations: Observaciones
+      drug:
+          observations: Observaciones
       crimes:
         crime: Delito
     models:
       iph: Informe Policial Homologado
       person: Personas
+      money: Dinero
+      drug: Drogas
+      tactical_equipment: Equipo Táctico
       
     
     

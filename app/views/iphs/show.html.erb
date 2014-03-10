@@ -17,7 +17,7 @@
 </div>
 
 
-<div class="panel panel-primary" style="font-size: 80%">
+<div class="panel panel-primary" style="font-size: 80%; margin-bottom: 57px">
   <!-- Default panel contents -->
   <div class="panel-heading">Datos generales</div>
   <div class="panel-body">
@@ -285,16 +285,143 @@
       <u ><%= vehicle.load_capacity %></u>
       </p>
       <p>
-      <b >Observaciónes</b>
+        <b >Observaciónes</b>
       <u ><%= vehicle.observations %></u>
       </p>
-
-
-
     </div>
   <%end%>
+
+
+  <% @iph.weapons.each do |weapon| %>
+    <ul class="list-group ">
+      <a class="list-group-item active">Arma  <%weapon.id%></a>
+    </ul>
+    <div class="panel-body">
+      <p>
+        <b >Tipo</b>
+      <u ><%= weapon.weapons_type.description %></u>
+      <b >Tipo</b>
+      <u ><%= weapon.description %></u>
+      </p>
+      <p>
+        <b >Marca </b>
+      <u ><%= weapon.brand %></u>
+      <b >Tipo </b>
+      <u ><%= weapon.weapon_type %></u>
+      <b >Calibre </b>
+      <u ><%= weapon.caliber %></u>
+      <b >Serie </b>
+      <u ><%= weapon.serial %></u>
+      </p>
+      <p>
+        <b >Inventario</b>
+      <u ><%= weapon.inventary %></u>
+      <b >Matricula SEDENA</b>
+      <u ><%= weapon.sedena_enrollment %></u>
+      </p>
+
+    </div>
+    <ul class="list-group ">
+      <p class="list-group-item list-group-item-info">Cargador / Cartuchos</p>
+    </ul>
+    <div class="panel-body">
+      <p>
+        <b >No. de Cartuchos</b>
+      <u ><%= weapon.carriatage_number %></u>
+      <b > Cartuchos utiles</b>
+      <u ><%= weapon.util_carriatages %></u>
+      <b >Percutidos</b>
+      <u ><%= weapon.used_carriateges %></u>
+      <b >  Numero de cargadores</b>
+      <u ><%= weapon.chargers_numbers %></u>
+      </p>
+    </div>
+
+  <%end%>
+
+  <ul class="list-group ">
+    <a class="list-group-item active">Objetos asegurados</a>
+  </ul>
+
+  <ul class="list-group ">
+    <p class="list-group-item list-group-item-info">Moneda</p>
+  </ul>
+  <% @iph.money.each do |money| %>
+    <div class="panel-body">
+      <p>
+        <b >Tipo</b>
+      <u ><%= money.kind %></u>
+      <b >Cantidad</b>
+      <u ><%= money.quantity %></u>
+
+      <% if money.real_money %>
+        <b>Dinero autentico</b>
+
+      <%else%>
+        <b>Dinero Apócrifo</b>
+      <%end%>
+      </p>
+      <p>
+        <b >Observaciones</b>
+      <u ><%= money.observations %></u>
+      </p>
+    </div>
+  <%end%>
+
+  <ul class="list-group ">
+    <p class="list-group-item list-group-item-info">Equipo Táctico</p>
+  </ul>
+  <% @iph.tactical_equipments.each do |tactical| %>
+    <div class="panel-body">
+      <p>
+        <b >Tipo</b>
+      <u><%= tactical.kind %></u>
+      <b>Marca</b>
+      <u><%= tactical.brand %></u>
+      <b>Modelo</b>
+      <u><%= tactical.inventary %></u>
+      <b>Serie</b>
+      <u><%= tactical.serial %></u>
+      <b>Cantidad</b>
+      <u><%= tactical.quantity %></u>
+      </p>
+
+    </div>
+  <% end %>
 </div>
 
 
-<%= link_to_function('<i class="icon icon-print">Imprimir</i>'.html_safe, "javascript:print()", :class => "btn btn-warning")  %>
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation" style="margin-bottom:0px;margin-left:0px;margin-right:0px;clear:both;">
+  <div class="container">
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li> <%= link_to_function('<i class="icon icon-print">Imprimir</i>'.html_safe, "javascript:print()")  %></li>
+        <li> 
+          <%= link_to iphs_path do%>
+            <i class="icon icon-back">Regresar</i>
+          <%end%>
+        </li>
+        <li> 
+          <%= link_to edit_iph_path(@iph) do %>
+            <span class="icon icon-edit-3"></span>
+            Editar
+          <% end %>
+        </li>
+        <li> 
+          <%= link_to new_iph_path do %>
+            <span class="icon icon-plus"></span>
+            Nuevo
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
 

@@ -5,67 +5,57 @@
       <h4><%= pluralize(@tactical_equipment.errors.count, "error") %> prohibited this tactical_equipment from being saved:</h4>
 
       <ul>
-      <% @tactical_equipment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <% @tactical_equipment.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :id, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :id, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :kind, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :kind, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :brand, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :brand, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :model, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :model, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :inventary, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :inventary, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :serial, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :serial, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :quantity, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :quantity, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :observations, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_area :observations, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :iph_id, :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :iph_id, :class => "form-control" %>
-    </div>
-  </div>
+  
+  
+      <div class="form-group">
+        <%= f.label :kind, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :kind, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :brand, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :brand, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :model, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :model, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :inventary, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :inventary, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :serial, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :serial, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :quantity, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :quantity, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :observations, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_area :observations, :class => "form-control" %>
+        </div>
+      </div>
+  
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit :class => "btn btn-primary" %>

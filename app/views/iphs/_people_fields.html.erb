@@ -31,7 +31,7 @@
     <div class="form-group">
       <%= f.label :nacionality, :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.select :nacionality,["Mexicano","Extranjero"] %>
+        <%= f.select :nacionality,["Mexicano","Extranjero"], {:prompt => "SELECCIONE"}, :class => "form-control" %>
       </div>
     </div>
 
@@ -64,7 +64,7 @@
     <div class="form-group">
       <%= f.label :sex, :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.select :sex, ["Masculino", "Femenino"], :class => "form-control" %>
+        <%= f.select :sex, ["Masculino", "Femenino"], {:prompt => "SELECCIONE"}, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
@@ -76,7 +76,7 @@
     <div class="form-group">
       <%= f.label :status_id, :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.collection_select(:status_id, Status.all, :id, :description, {:prompt => "seleccione el estatus de la persona"}) %>
+        <%= f.collection_select(:status_id, Status.all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
       </div>
     </div>
     <div class="form-group">
@@ -129,13 +129,13 @@
     <div class="form-group">
       <%= f.label :at_disposal_of, :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.select :at_disposal_of, ["OFICIAL CALIFICADOR","FISCALIA GRAL","PGR","MIGRACIÓN","OTROS"], :class => "form-control" %>
+        <%= f.select :at_disposal_of, ["OFICIAL CALIFICADOR","FISCALIA GRAL","PGR","MIGRACIÓN","OTROS"], {:prompt => "SELECCIONE"}, :class => "form-control", :onchange=> "getColumnId(this);"%>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group oficial">
       <%= f.label :official_qualifier_id, :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.collection_select(:official_qualifier_id, OfficialQualifier.all, :id, :name) %>
+        <%= f.collection_select(:official_qualifier_id, OfficialQualifier.all, :id, :name, {:prompt => "SELECCIONE"}, :class => "form-control") %>
       </div>
     </div>
     <div class="form-group">
@@ -178,12 +178,18 @@
         yearRange: '-100:+0'});
     });
   });
+ $('.oficial').fadeOut(0);
+  function getColumnId(column) {
+    var column_id = column.id.replace(/[a-z_]/gi, "");
+    person_id = "iph_person_attributes_" + column_id + "_at_disposal_of";
+    //alert(document.getElementById(person_id).value);
+    if(document.getElementById(person_id).value === "OFICIAL CALIFICADOR"){
+      //alert("HABILITAMOS ENTRADA");
+      $('.oficial').fadeIn(0);
+    }else{
+      $('.oficial').fadeOut(0);
+      // $('#'+person_id).val('');
+    }
+      
+  }
 </script>
-<%#*<script type="text/javascript">%>
-<%#*$(function() {%>
-<%#*$('#fecha').datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true,%>
-<%#*yearRange: '-100:+0'});%>
-<%#*});%>
-
-
-<%#*</script>%>

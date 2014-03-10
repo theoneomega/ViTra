@@ -1,3 +1,16 @@
+<% if @iph.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h4><%= pluralize(@iph.errors.count, "error") %> prohibited this record from being saved:</h4>
+
+    <ul>
+      <% @iph.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= nested_form_for(@iph, :html => { :class => "form-horizontal" }) do |f| %>
   <div class="panel panel-info">
     <div class="panel-heading"> Datos generales</div>
@@ -5,7 +18,7 @@
       <div class="form-group">
         <%= f.label :officer_id, "No. de Oficial", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.collection_select(:officer_id, Officer.all, :id, :name, {:prompt => "SELECCIONE OFICIAL"} )%>
+          <%= f.collection_select(:officer_id, Officer.order("id ASC").all, :id, :id, {:prompt => "SELECCIONE OFICIAL"} ,:class => "form-control" )%>
         </div>
       </div>
       <div class="form-group">
@@ -18,7 +31,7 @@
       <div class="form-group">
         <%= f.label :infraction_id, "Motivo", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.collection_select(:infraction_id, Infraction.all, :id, :description, {:prompt => "SELECCIONE"}) %>
+          <%= f.collection_select(:infraction_id, Infraction.all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
 
@@ -49,13 +62,13 @@
       <div class="form-group">
         <%= f.label :coordinator_id, "Nombre del Coordinador", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.collection_select( :coordinator_id, Coordinator.all, :id, :name) %>
+          <%= f.collection_select( :coordinator_id, Coordinator.all, :id, :name, {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :commander_id, "Nombre del Comandante en Turno", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.collection_select(:commander_id, Commander.all, :id, :name) %>
+          <%= f.collection_select(:commander_id, Commander.all, :id, :name, {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
       <div class="form-group">
@@ -67,38 +80,38 @@
       <div class="form-group">
         <%= f.label :township_id, "Municipio", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.collection_select(:township_id, Township.all, :id, :description, :class => "form-control") %>
+          <%= f.collection_select(:township_id, Township.all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :district_id, "Distrito", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
   <%#= f.collection_select(:district_id, District.all, :id, :description, :placeholder => "seleccione el estatus") %>
-          <%= f.collection_select(:district_id, District.all, :id, :description, {:prompt => "SELECCIONE DISTRITO"})%>
+          <%= f.collection_select(:district_id, District.all, :id, :description, {:prompt => "SELECCIONE DISTRITO"}, :class => "form-control")%>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :sector_id, "Sector", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.select(:sector_id, []) %>
+          <%= f.select(:sector_id, [], {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :shift, "Turno", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.select(:shift,["MATUTINO","VESPERTINO","NOCTURNO"]) %>
+          <%= f.select(:shift,["MATUTINO","VESPERTINO","NOCTURNO"], {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :suburb_id,"Colonia", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.collection_select(:suburb_id, Suburb.order("description ASC").all, :id, :description, :class => "form-control") %>
+          <%= f.collection_select(:suburb_id, Suburb.order("description ASC").all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :street_id, "Calle", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.collection_select(:street_id, Street.order("description ASC").all, :id, :description) %>
+          <%= f.collection_select(:street_id, Street.order("description ASC").all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
       <div class="form-group">
@@ -204,12 +217,41 @@
     </div>
   </div>
 
+  <p>
+    <%=f.fields_for :money do |builder| %>
+      <%= render 'money_fields', :f => builder %>
+    <%end%>
+  </p>
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-money-1">  Agregar Dinero</i>'.html_safe, :money, :class => "btn btn-success" %>
+    </div>
+  </div>
+  
+  
+  <p>
+    <%=f.fields_for :tactical_equipments do |builder| %>
+      <%= render 'tactical_equipment_fields', :f => builder %>
+    <%end%>
+  </p>
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-police">  Agregar Equipo Tactico</i>'.html_safe, :tactical_equipments, :class => "btn btn-success" %>
+    </div>
+  </div>
+
+
 
   <div class="form-group">
     <div class="col-sm-2 col-sm-10">
       <%= f.submit :class => "btn btn-primary" %>
     </div>
   </div>
+
+
+
 <% end %>
 
 <script type="text/javascript">

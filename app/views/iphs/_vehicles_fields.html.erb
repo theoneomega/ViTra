@@ -5,25 +5,27 @@
     <div class="form-group">
       <%= f.label :kind_id, "Tipo", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.collection_select(:kind_id, Kind.all, :id, :description, {:prompt => "SELECCIONE"}, :id => "tipo")%>
+        <%= f.collection_select(:kind_id, Kind.all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control", :id => "tipo")%>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :brand_id, "Marca", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.collection_select(:brand_id, Brand.all, :id, :description, {:prompt => "SELECIONE MARCA"},:onchange => 'getColumnId(this);') %>
+        <%= f.collection_select(:brand_id, Brand.all, :id, :description, {:prompt => "SELECIONE MARCA"}, :onchange => 'getColumnId(this);', :class => "form-control") %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :sub_brand_id, "Linea", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.select(:sub_brand_id, []) %>
+        <%if !@iph.vehicles.nil?%>
+        <%= f.select(:sub_brand_id, [] , {:prompt => "SELECCIONE"}, :class => "form-control") %>
+        <%end%>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :vehicle_year, "Modelo", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.date_select :vehicle_year, {:start_year => Time.now.year, :end_year => Time.now.year - 95, :discard_day => true, :discard_month => true} %>
+        <%= f.date_select :vehicle_year, {:start_year => Time.now.year, :end_year => Time.now.year - 95, :discard_day => true, :discard_month => true}, :class => "form-control" %>
       </div>
     </div>
     <div class="form-group">
@@ -65,7 +67,7 @@
     <div class="form-group">
       <%= f.label :precedence, "Procedencia", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.select(:precedence, ["NACIONAL","IMPORTADO","EXTRANJERO"]) %>
+        <%= f.select(:precedence, ["NACIONAL","IMPORTADO","EXTRANJERO"], {:prompt => "SELECCIONE"}, :class => "form-control") %>
       </div>
     </div>
     <div class="form-group">

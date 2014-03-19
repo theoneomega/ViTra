@@ -1,13 +1,28 @@
 ViTra::Application.routes.draw do
-  resources :official_qualifiers
 
-  get 'iphs/get_sectors'
-  get 'vehicles/get_sub_brands'
-  
+  get "autocomplete/index"
+
+  get "autocomplete/show"
+
+  get "autocomplete/delete"
+
+  get "autocomplete/update"
+
+  get "autocomplete/edit"
+
+  get "autocomplete/new"
+
+  get "autocomplete/create"
+
+  resources :official_qualifiers
 
   
   get "welcome/index"
 
+  
+  get '/autocomplete/streets' => "autocomplete#streets"
+   
+  
   resources :sectors
 
 
@@ -28,7 +43,10 @@ ViTra::Application.routes.draw do
 
   resources :townships
 
-
+ 
+  get 'vehicles/get_sub_brands'
+  
+  
   resources :vehicles
 
 
@@ -37,7 +55,7 @@ ViTra::Application.routes.draw do
 
   resources :weapons_types
 
-
+  get 'iphs/get_sectors'
   resources :iphs
 
 

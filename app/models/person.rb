@@ -10,7 +10,7 @@ class Person < ActiveRecord::Base
   belongs_to :status
   validates :status_id, :presence => true
   validates :first_name, :presence => true
-  validates :last_name1, :presence => true
+  validates :last_name, :presence => true
   validates :birth_date, :presence => true
   
   

@@ -94,4 +94,18 @@ class IphsController < ApplicationController
     render json: @sectors, :callback => params[:callback] 
   end
   
+  def street_name=(description)
+    street = Street.find_by_description(description)
+    if street           
+      self.street_id = street.id
+    else              
+      errors[:street_name] << "Invalid name entered"
+    end               
+  end                 
+
+  def street_name       
+    Street.find(street_id).description if street_id
+  end       
+  
+  
 end

@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery.min
 //= require bootstrap
-
+//= require autocomplete.js.coffee
 //= require jquery.ui.all
 //= require autocomplete-rails
+

@@ -16,7 +16,6 @@
   </h5>
 </div>
 
-
 <div class="panel panel-primary" style="font-size: 80%; margin-bottom: 57px">
   <!-- Default panel contents -->
   <div class="panel-heading">Datos generales</div>
@@ -26,29 +25,29 @@
     <u ><%= @iph.id %></u>
 
     <b>Numero de oficio</b>
-    <u ><%= @iph.office_number %></u>
+    <u ><%= @iph.office_number.upcase %></u>
 
     <b  >Fecha y hora del evento</b>
     <u ><%=I18n.l @iph.event_date, :format => "%d de %B del %Y a las %H:%M hrs" %></u>
     </p>
     <p style="padding-left:1em">
       <b  >Numero Ece. Transporte</b>
-    <u ><%= @iph.officer.patrol.description %></u>
+    <u ><%= @iph.officer.patrol.description.upcase %></u>
 
     <b  >No. de Oficial</b>
     <u ><%= @iph.officer.id %></u>
     </p>
     <p>
       <b >Motivo</b>
-    <u ><%= @iph.infraction.description %></u>
+    <u ><%= @iph.infraction.description.upcase %></u>
     </p>
     <p>
       <b >Dirigido a</b>
-    <u ><%= @iph.addressed_to %></u>
+    <u ><%= @iph.addressed_to.upcase %></u>
     </p>
     <p>
       <b >Oficial</b>
-    <u ><%= @iph.officer.name %></u>
+    <u ><%= @iph.officer.name.upcase %></u>
     </p>
     <p>
       <b >Operativo</b>
@@ -59,17 +58,17 @@
       <u > SI</u>
 
       <b >Nombre del Operativo</b>
-      <u ><%= @iph.operative_name %></u>
+      <u ><%= @iph.operative_name.upcase %></u>
 
     <%  end %>
     </p>
     <p>
       <b >Nombre del coordinador  </b>
-    <u ><%= @iph.coordinator.name %></u>
+    <u ><%= @iph.coordinator.name.upcase %></u>
     </p>
     <p>
       <b >Nombre del Comandante en turno  </b>
-    <u ><%= @iph.commander.name %></u>
+    <u ><%= @iph.commander.name.upcase %></u>
     </p>
   </div>
 
@@ -80,30 +79,30 @@
   <div class="panel-body">
     <p>
       <b >Estado</b>
-    <u ><%= @iph.state %></u>
+    <u ><%= @iph.state.upcase %></u>
 
     <b >Municipio</b>
-    <u ><%= @iph.township.description %></u>
+    <u ><%= @iph.township.description.upcase %></u>
     </p>
     <p>
       <b >Distrito</b>
-    <u ><%= @iph.district.description %></u>
+    <u ><%= @iph.district.description.upcase %></u>
 
     <b >Sector</b>
-    <u ><%= @iph.sector.description %></u>
+    <u ><%= @iph.sector.description.upcase %></u>
 
     <b >Turno</b>
-    <u ><%= @iph.shift %></u>
+    <u ><%= @iph.shift.upcase %></u>
     </p>
     <p>
       <b >Localidad</b>
-    <u ><%= @iph.township.description %></u>
+    <u ><%= @iph.township.description.upcase %></u>
     <b >Colonia</b>
-    <u ><%= @iph.suburb.description %></u>
+    <u ><%= @iph.suburb.description.upcase %></u>
     </p>
     <p>
       <b >Calle</b>
-    <u ><%= @iph.street.description %></u>
+    <u ><%= @iph.street.description.upcase %></u>
 
     <b >Numero Interior</b>
     <u ><%= @iph.interior_number %></u>
@@ -117,11 +116,11 @@
 
     <p>
       <b >Between streets:</b>
-    <u ><%= @iph.between_streets %></u>
+    <u ><%= @iph.between_streets.upcase if @iph.between_streets %></u>
     </p>
     <p>
       <b >References:</b>
-    <u ><%= @iph.references %></u>
+    <u ><%= @iph.references.upcase if @iph.references %></u>
     </p>
     <p>
       <b >Tramo carretero</b>
@@ -132,7 +131,7 @@
       <u >SI</u>
 
       <b >Tramo carretero</b>
-      <u ><%= @iph.road_name %></u>
+      <u ><%= @iph.road_name.upcase if @iph.road_name%></u>
       <b >Kilometro</b>
       <u ><%= @iph.kilometer %></u>
 
@@ -146,7 +145,7 @@
   </ul>
   <div class="panel-body">
     <p>
-      <b ><%= @iph.facts_description %></b>
+      <b ><%= @iph.facts_description.upcase if @iph.facts_description %></b>
     </p>
   </div>
 
@@ -160,19 +159,19 @@
     <div class="panel-body">
       <p>
         <b >Apellido Paterno</b>
-      <u ><%= person.last_name1 %></u>
+      <u ><%= person.last_name1.upcase %></u>
       <b >Apellido Materno</b>
-      <u ><%= person.last_name2 %></u>
+      <u ><%= person.last_name2.upcase %></u>
       <b >Nombre(s)</b>
-      <u ><%= person.first_name %></u>
+      <u ><%= person.first_name.upcase %></u>
       </p>
       <p>
         <b >Alias</b>
-      <u ><%= person.alias %></u>
+      <u ><%= person.alias.upcase %></u>
       <b >Nacionalidad </b>
-      <u ><%= person.nacionality %></u>
+      <u ><%= person.nacionality.upcase %></u>
       <b >Grupo Étnico </b>
-      <u ><%= person.ethni_group %></u>
+      <u ><%= person.ethni_group.upcase if person.ethni_group%></u>
       </p>
       <p>
         <b >Fecha de Nacimiento</b>
@@ -180,19 +179,19 @@
       <b >Edad</b>
       <u ><%= person.age %></u>
       <b >RFC</b>
-      <u ><%= person.rfc %></u>
+      <u ><%= person.rfc.upcase if person.rfc %></u>
       <b >Sexo</b>
-      <u ><%= person.sex %></u>
+      <u ><%= person.sex.upcase %></u>
       </p>
       <p>
         <b >Domicilio</b>
-      <u ><%= person.domicile %></u>
+      <u ><%= person.domicile.upcase if person.domicile%></u>
       </p>
       <p>
         <b >Clasificacion</b>
-      <u ><%= person.status.description %></u>
+      <u ><%= person.status.description.upcase %></u>
       <b >Grupo Étnico </b>
-      <u ><%= person.residencial_status %></u>
+      <u ><%= person.residencial_status.upcase %></u>
       </p>
     </div>
 
@@ -202,7 +201,7 @@
     <div class="panel-body">
       <ul>
         <% person.crime_person.each do |crime| %>
-          <li class="icon icon-attention-circled" style="list-style-type: none"><%= crime.crime.description %></li>
+          <li class="icon icon-attention-circled" style="list-style-type: none"><%= crime.crime.description.upcase %></li>
         <%end%>
       </ul>
     </div>
@@ -214,10 +213,10 @@
 
       <p>
         <b >Ocupación</b>
-      <u ><%= person.profession %> </u>
+      <u ><%= person.profession.upcase if person.profession %> </u>
 
       <b >Escolaridad</b>
-      <u ><%= person.pupilage %> </u>
+      <u ><%= person.pupilage.upcase if person.pupilage %> </u>
       </p>
       <p>
         <b >Teléfono particular</b>
@@ -227,7 +226,7 @@
       </p>
       <p>
         <b >Observaciones</b>
-      <u ><%= person.observations %> </u>
+      <u ><%= person.observations.upcase %> </u>
       </p>
     </div>
 
@@ -238,7 +237,7 @@
       <div class="panel-body">
         <p>
           <b >Motivo de la detencion</b>
-        <u > <%= @iph.infraction.description %></u>
+        <u > <%= @iph.infraction.description.upcase %></u>
 
         </p>
       </div>
@@ -251,42 +250,42 @@
     <div class="panel-body">
       <p>
         <b >Tipo</b>
-      <u ><%= vehicle.kind.description %></u>
+      <u ><%= vehicle.kind.description.upcase %></u>
       <b >Marca </b>
-      <u ><%= vehicle.brand.description %></u>
+      <u ><%= vehicle.brand.description.upcase %></u>
       <b >Linea</b>
-      <u ><%= vehicle.sub_brand.description %></u>
+      <u ><%= vehicle.sub_brand.description.upcase %></u>
       <b >Modelo </b>
       <u ><%=I18n.l vehicle.vehicle_year, :format => "%Y" %></u>
       </p>
       <p>
         <b >Matricula</b>
-      <u ><%= vehicle.plate %></u>
+      <u ><%= vehicle.plate.upcase %></u>
       <b >Color </b>
-      <u ><%= vehicle.color %></u>
+      <u ><%= vehicle.color.upcase %></u>
       <b >Numero motor</b>
-      <u ><%= vehicle.engine_serial %></u>
+      <u ><%= vehicle.engine_serial.upcase %></u>
       </p>
       <p>
         <b >Numero de serie</b>
-      <u ><%= vehicle.serial_number %></u>
+      <u ><%= vehicle.serial_number.upcase %></u>
       <b >Uso </b>
-      <u ><%= vehicle.usage %></u>
+      <u ><%= vehicle.usage.upcase %></u>
       <b >Capacidad de pasajeros</b>
       <u ><%= vehicle.capacity %></u>
       </p>
 
       <p>
         <b >Procedencia</b>
-      <u ><%= vehicle.precedence %></u>
+      <u ><%= vehicle.precedence.upcase %></u>
       <b >Empresa </b>
-      <u ><%= vehicle.company %></u>
+      <u ><%= vehicle.company.upcase if vehicle.company %></u>
       <b >Capacidad de carga</b>
       <u ><%= vehicle.load_capacity %></u>
       </p>
       <p>
         <b >Observaciónes</b>
-      <u ><%= vehicle.observations %></u>
+      <u ><%= vehicle.observations.upcase %></u>
       </p>
     </div>
   <%end%>
@@ -299,25 +298,25 @@
     <div class="panel-body">
       <p>
         <b >Tipo</b>
-      <u ><%= weapon.weapons_type.description %></u>
+      <u ><%= weapon.weapons_type.description.upcase if weapon.weapons_type %></u>
       <b >Tipo</b>
-      <u ><%= weapon.description %></u>
+      <u ><%= weapon.description.upcase %></u>
       </p>
       <p>
         <b >Marca </b>
-      <u ><%= weapon.brand %></u>
+      <u ><%= weapon.brand.upcase %></u>
       <b >Tipo </b>
-      <u ><%= weapon.weapon_type %></u>
+      <u ><%= weapon.weapon_type.upcase if weapon.weapon_type %></u>
       <b >Calibre </b>
-      <u ><%= weapon.caliber %></u>
+      <u ><%= weapon.caliber.upcase %></u>
       <b >Serie </b>
-      <u ><%= weapon.serial %></u>
+      <u ><%= weapon.serial.upcase if weapon.serial%></u>
       </p>
       <p>
         <b >Inventario</b>
-      <u ><%= weapon.inventary %></u>
+      <u ><%= weapon.inventary.upcase if weapon.inventary %></u>
       <b >Matricula SEDENA</b>
-      <u ><%= weapon.sedena_enrollment %></u>
+      <u ><%= weapon.sedena_enrollment.upcase if weapon.sedena_enrollment %></u>
       </p>
 
     </div>
@@ -338,52 +337,119 @@
     </div>
 
   <%end%>
-
-  <ul class="list-group ">
-    <a class="list-group-item active">Objetos asegurados</a>
-  </ul>
-
-  <ul class="list-group ">
-    <p class="list-group-item list-group-item-info">Moneda</p>
-  </ul>
+  <% if !@iph.money.blank? or !@iph.tactical_equipments.blank? or !@iph.documents.blank?  %>
+    <ul class="list-group ">
+      <a class="list-group-item active">Objetos asegurados</a>
+    </ul>
+  <%  end %>
   <% @iph.money.each do |money| %>
+    <ul class="list-group ">
+      <p class="list-group-item list-group-item-info">Moneda</p>
+    </ul>
+
     <div class="panel-body">
       <p>
         <b >Tipo</b>
-      <u ><%= money.kind %></u>
+      <u ><%= money.kind.upcase %></u>
       <b >Cantidad</b>
       <u ><%= money.quantity %></u>
 
       <% if money.real_money %>
-        <b>Dinero autentico</b>
+        <b>DINERO AUTENTICO</b>
 
       <%else%>
-        <b>Dinero Apócrifo</b>
+        <b>DINERO APÓCRIFO</b>
       <%end%>
       </p>
       <p>
         <b >Observaciones</b>
-      <u ><%= money.observations %></u>
+      <u ><%= money.observations.upcase %></u>
       </p>
     </div>
   <%end%>
-
-  <ul class="list-group ">
-    <p class="list-group-item list-group-item-info">Equipo Táctico</p>
-  </ul>
   <% @iph.tactical_equipments.each do |tactical| %>
+    <ul class="list-group ">
+      <p class="list-group-item list-group-item-info">Equipo Táctico</p>
+    </ul>
+
     <div class="panel-body">
       <p>
         <b >Tipo</b>
-      <u><%= tactical.kind %></u>
+      <u><%= tactical.kind.upcase %></u>
       <b>Marca</b>
-      <u><%= tactical.brand %></u>
+      <u><%= tactical.brand.upcase if tactical.brand %></u>
       <b>Modelo</b>
-      <u><%= tactical.inventary %></u>
+      <u><%= tactical.inventary.upcase if tactical.inventary %></u>
       <b>Serie</b>
-      <u><%= tactical.serial %></u>
+      <u><%= tactical.serial.upcase if tactical.serial%></u>
       <b>Cantidad</b>
       <u><%= tactical.quantity %></u>
+      </p>
+
+    </div>
+  <% end %>
+  <% @iph.documents.each do |document| %>
+    <ul class="list-group ">
+      <p class="list-group-item list-group-item-info">Documentos</p>
+    </ul>
+
+    <div class="panel-body">
+      <p>
+        <b >Tipo</b>
+      <u><%= document.kind.upcase %></u>
+      <b >Cantidad</b>
+      <u><%= document.quantity %></u>
+      <% if document.real %>
+        <b>AUTENTICO</b>
+      <% else %>
+        <b>APÓCRIFO</b>
+      <%end%>
+      </p>
+      <p>
+        <b >Observaciones</b>
+      <u><%= document.observations.upcase %></u>
+      </p>
+    </div>
+  <% end %>
+
+  <% if !@iph.multimedium.blank? or !@iph.items.blank? %>
+    <ul class="list-group ">
+      <a class="list-group-item active">Informacion complementaria</a>
+    </ul>
+  <%end%>
+  <% @iph.multimedium.each do |multimedia| %>
+    <ul class="list-group ">
+      <p class="list-group-item list-group-item-info">Multimedia</p>
+    </ul>
+    <div class="panel-body">
+      <p>
+        <b >Tipo</b>
+      <u><%= multimedia.kind.upcase %></u>
+      <b >Cantidad</b>
+      <u><%= multimedia.quantity %></u>
+      </p>
+      <p>
+        <b >Descripción</b>
+      <u><%= multimedia.description.upcase %></u>
+      </p>
+
+    </div>
+  <% end %>
+
+  <% @iph.items.each do |item| %>
+    <ul class="list-group ">
+      <p class="list-group-item list-group-item-info">Multimedia</p>
+    </ul>
+    <div class="panel-body">
+      <p>
+        <b >Tipo</b>
+      <u><%= multimedia.kind.upcase %></u>
+      <b >Cantidad</b>
+      <u><%= multimedia.quantity %></u>
+      </p>
+      <p>
+        <b >Descripción</b>
+      <u><%= multimedia.description.upcase %></u>
       </p>
 
     </div>

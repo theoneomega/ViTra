@@ -13,7 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-database.yml
+#database.yml
 test/
 nbproject/
 *.sass-cache

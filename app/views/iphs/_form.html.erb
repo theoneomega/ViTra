@@ -1,15 +1,4 @@
-<% if @iph.errors.any? %>
-  <div class="alert alert-danger alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4><%= pluralize(@iph.errors.count, "error") %> prohibited this record from being saved:</h4>
 
-    <ul>
-      <% @iph.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 
 <%= nested_form_for(@iph, :html => { :class => "form-horizontal" }) do |f| %>
   <div class="panel panel-info">
@@ -27,6 +16,8 @@
           <%= f.text_field :office_number, :class => "form-control" %>
         </div>
       </div>
+
+
 
       <div class="form-group">
         <%= f.label :infraction_id, "Motivo", :class => "col-sm-2 control-label" %>
@@ -108,68 +99,81 @@
           <%= f.collection_select(:suburb_id, Suburb.order("description ASC").all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
-      <div class="form-group">
-        <%= f.label :street_id, "Calle", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.collection_select(:street_id, Street.order("description ASC").all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :exterior_number, "Numero exterior", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.text_field :exterior_number, :class => "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :interior_number, "Numero interior", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.text_field :interior_number, :class => "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :zip, "Codigo Postal", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.number_field :zip, :class => "form-control", :in => 31000...33000, :message => "invalid fundays" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :between_streets, "Entre que calles", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.text_field :between_streets, :class => "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :references, "Referencias", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.text_field :references, :class => "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :road, "Caminos", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.check_box :road, :class => "form-control" %>
-        </div>
-      </div>
-      <div class="form-group" id="tramo">
-        <%= f.label :road_name,"Tramo carretero", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.text_field :road_name, :class => "form-control" %>
-        </div>
-      </div>
-      <div class="form-group" id="kilometro" >
-        <%= f.label :kilometer, "Kilometro", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.text_field :kilometer, :class => "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :facts_description, "Descripción de los hechos", :class => "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= f.text_area :facts_description, :class => "form-control" %>
-        </div>
-      </div>
+
+
 
     </div>
+  <%#*<div class="form-group">%>
+  <%#= f.label :street_id, "Calle", :class => "col-sm-2 control-label" %>
+  <%#*<div class="col-sm-10">%>
+  <%#= f.collection_select(:street_id, Street.order("description ASC").all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
+  <%#*</div>%>
+  <%#*</div>%>
+    <%= f.hidden_field :street_id %>
+
+    <div class="form-group">
+      <%= f.label :street_name, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :street_name, :class => "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :exterior_number, "Numero exterior", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :exterior_number, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :interior_number, "Numero interior", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :interior_number, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :zip, "Codigo Postal", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :zip, :class => "form-control", :in => 31000...33000, :message => "invalid fundays" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :between_streets, "Entre que calles", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :between_streets, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :references, "Referencias", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :references, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :road, "Caminos", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.check_box :road, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group" id="tramo">
+      <%= f.label :road_name,"Tramo carretero", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :road_name, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group" id="kilometro" >
+      <%= f.label :kilometer, "Kilometro", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :kilometer, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :facts_description, "Descripción de los hechos", :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_area :facts_description, :class => "form-control" %>
+      </div>
+    </div>
+
   </div>
   <div class="form-group">
     <div class="col-sm-2 col-sm-10">
@@ -228,8 +232,8 @@
       <%= f.link_to_add '<i class="icon icon-money-1">  Agregar Dinero</i>'.html_safe, :money, :class => "btn btn-success" %>
     </div>
   </div>
-  
-  
+
+
   <p>
     <%=f.fields_for :tactical_equipments do |builder| %>
       <%= render 'tactical_equipment_fields', :f => builder %>
@@ -242,6 +246,43 @@
     </div>
   </div>
 
+  <p>
+    <%=f.fields_for :documents do |builder| %>
+      <%= render 'documents_fields', :f => builder %>
+    <%end%>
+  </p>
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-doc-add">  Agregar Documentos</i>'.html_safe, :documents, :class => "btn btn-success" %>
+    </div>
+  </div>
+
+
+  <p>
+    <%=f.fields_for :multimedium do |builder| %>
+      <%= render 'multimedia_fields', :f => builder %>
+    <%end%>
+  </p>
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="glyphicon glyphicon-picture">  Agregar Multimedia</i>'.html_safe, :multimedium, :class => "btn btn-success" %>
+    </div>
+  </div>
+
+  <p>
+    <%=f.fields_for :items do |builder| %>
+      <%= render 'items_fields', :f => builder %>
+    <%end%>
+  </p>
+
+  <div class="form-group">
+    <div class="col-sm-2 col-sm-10">
+      <%= f.link_to_add '<i class="icon icon-list-alt">  Agregar otros objetos</i>'.html_safe, :items, :class => "btn btn-success" %>
+    </div>
+  </div>
+
 
 
   <div class="form-group">
@@ -249,6 +290,8 @@
       <%= f.submit :class => "btn btn-primary" %>
     </div>
   </div>
+
+
 
 
 
@@ -311,4 +354,6 @@
       dropdown.options.add(opt);
     }
   });
+
+
 </script>

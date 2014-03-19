@@ -18,7 +18,7 @@
       <%= f.label :sub_brand_id, "Linea", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%if !@iph.vehicles.nil?%>
-        <%= f.select(:sub_brand_id, [] , {:prompt => "SELECCIONE"}, :class => "form-control") %>
+          <%= f.select(:sub_brand_id, [] , {:prompt => "SELECCIONE"}, :class => "form-control") %>
         <%end%>
       </div>
     </div>
@@ -124,7 +124,6 @@
     });
 
     function setModels(models) {
-<%#*alert(sub_brand_id);%>
       var dropdown = document.getElementById(sub_brand_id);
       if (dropdown) {
         for (var i = 0; i < models.length; ++i) {

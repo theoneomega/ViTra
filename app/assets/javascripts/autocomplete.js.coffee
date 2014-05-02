@@ -5,3 +5,7 @@ $(document).ready ->
   $('#iph_street_name').autocomplete
     source: "/autocomplete/streets"
     select: (event,ui) -> $("#iph_street_id").val(ui.item.id)
+    
+  $('#iph_between_streets').autocomplete
+    source: "/autocomplete/streets"
+    select: (event,ui) -> $("#iph_between_streets").val(ui.item.id)

@@ -1,3 +1,6 @@
 class Item < ActiveRecord::Base
-  attr_accessible :ammunition_clip, :anti_gas_mask, :binoculars, :brand, :document_type, :documents, :handcufs, :id, :inventary, :kind, :model, :money, :observations, :official_uniform, :quantity, :real_document, :real_money, :serial, :tactical_equipment, :tactical_vest
+  attr_accessible :id, :kind, :quantity , :observations, :iph_id
+  belongs_to :iph
+  validates :kind, :presence => true
+  validates :quantity, :presence => true
 end

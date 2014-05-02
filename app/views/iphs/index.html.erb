@@ -1,9 +1,10 @@
+
 <div class="page-header">
   <%= link_to new_iph_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Iph
+    Registrar  IPH
   <% end %>
-  <h1>Listing iphs</h1>
+  <h1>Listado </h1>
 </div>
 
 <div class="table-responsive">
@@ -11,36 +12,43 @@
     <thead>
       <tr>
         <th>Fecha</th>
-        <th>Officer</th>
-        <th>Infraction</th>
-        <th>Coordinator</th>
-        <th>Commander</th>
-        <th>District</th>
+        <th>Oficial</th>
+        <th>Delito y/o falta administrativa</th>
+        <th>Coordinador</th>
+        <th>Comandante en turno</th>
+        <th>Distrito</th>
         <th>Sector</th>
-        <th>Suburb</th>
-        <th>Shift</th>
-        <th>Street</th>
-        <th></th>
-        <th></th>
+        <th>Colonia</th>
+        <th>Turno</th>
+        <th>Calle</th>
         <th></th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @iphs) do |iph| %>
-      <td><%= iph.event_date %></td>
+      <td><%=I18n.l iph.event_date, :format => :short %></td>
       <td><%= iph.officer.name %></td>
       <td><%= iph.infraction.description %></td>
-      <td><%= iph.coordinator.name %></td>
+      <td><%= iph.coordinator_name %></td>
       <td><%= iph.commander.name %></td>
       <td><%= iph.district.description %></td>
       <td><%= iph.sector.description %></td>
       <td><%= iph.shift %></td>
-      <td><%= iph.suburb.description %></td>
+      <td><%= iph.suburb.description if iph.suburb%></td>
       <td><%= iph.street.description %></td>
-      <td><%= link_to 'Show', iph %></td>
-      <td><%= link_to 'Edit', edit_iph_path(iph) %></td>
-      <td><%= link_to 'Destroy', iph, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <ul class="nav nav-pills">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='Acciones'>Acciones<i class="icon-down-dir"></i>&nbsp;<i class="icon-caret-down"></i></a>
+            <ul class="dropdown-menu">
+              <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> Mostrar'.html_safe, iph %></li>
+              <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_iph_path(iph)%></li>
+              <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-trash"></i> Eliminar'.html_safe, iph, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            </ul>
+          </li>
+        </ul>
+      </td>
     <% end %>
     </tbody>
   </table>

@@ -64,7 +64,7 @@
     </p>
     <p>
       <b >Nombre del coordinador  </b>
-    <u ><%= @iph.coordinator.name.upcase %></u>
+    <u ><%= @iph.coordinator_name %></u>
     </p>
     <p>
       <b >Nombre del Comandante en turno  </b>
@@ -98,7 +98,9 @@
       <b >Localidad</b>
     <u ><%= @iph.township.description.upcase %></u>
     <b >Colonia</b>
-    <u ><%= @iph.suburb.description.upcase %></u>
+    <% if @iph.suburb %>
+      <u ><%= @iph.suburb.description.upcase %></u>
+    <% end %>
     </p>
     <p>
       <b >Calle</b>
@@ -115,7 +117,7 @@
     </p>
 
     <p>
-      <b >Between streets:</b>
+      <b >Entre las calles:</b>
     <u ><%= @iph.between_streets.upcase if @iph.between_streets %></u>
     </p>
     <p>

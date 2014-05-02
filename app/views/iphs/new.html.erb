@@ -10,8 +10,11 @@
   <% if @iph.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@iph.errors.count, "error") %> prohibited this iph from being saved:</h4>
-
+      <% if @iph.errors.count > 1 %>
+        <h4><%= @iph.errors.count %>  errores no dejaron que el IPH fuera registrado:</h4>
+      <% else %>
+        <h4><%= pluralize(@iph.errors.count, "error") %> no dejaron que el IPH fuera registrado:</h4>
+      <% end %>
       <ul>
         <% @iph.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

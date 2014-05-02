@@ -106,6 +106,32 @@ class IphsController < ApplicationController
   def street_name       
     Street.find(street_id).description if street_id
   end       
-  
+
+  def between=(description)
+    between = Street.find_by_description(description)
+    if between           
+      self.between_streets = street.description
+    else              
+      errors[:between_streets] << "Invalid name entered"
+    end               
+  end                 
+
+  def between    
+    Street.find_by_description(between_streets).description if between_streets
+  end
+
+  def multa=(description)   
+    multa = Infraction.find_by_description(description)  
+    if multa
+      self.infraction_id = infracntion.id
+    else 
+      errors[:multa] << "Invalido"
+    end
+  end
+
+  def multa
+    Infraction.find_by_description(infraction_id).description if infractin_id
+  end
+
   
 end

@@ -6,12 +6,10 @@ gem 'rails', '3.2.16'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-#gem 'sqlite3'
+gem 'sqlite3'
 gem 'seed_dump'
 
-gem 'devise'
-gem 'cancan'
-gem 'roles_ui', git: 'http://github.com/paupauorg/roles-ui.git'
+
 
 gem 'thin'
 #gem 'puma'
@@ -25,7 +23,7 @@ gem "twitter-bootstrap-rails", '= 2.2.6'
 gem 'bootstrap-generators'
 gem 'ruby-oci8', '= 2.1.6'
 gem 'activerecord-oracle_enhanced-adapter','~> 1.4.0'
-#gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'https://github.com/zpaulovics/datetimepicker-rails.git'
+gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'https://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'bootstrap-datetimepicker-rails'
 gem 'bootstrap-sass'
 # Gems used only for assets and not required

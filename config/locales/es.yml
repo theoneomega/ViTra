@@ -9,13 +9,12 @@ es:
   new: Nuevo
   time:
     formats:
-      corto: ! '%D DE M'
+      corto: ! '%D DE %M de %Y'
       propio: ! '%d DE %m'
       default: ! '%d/%m/%Y'
       long: ! '%A %d DE %B de %Y'
-      short: ! '%d DE %B'
-      
-      
+      short: ! '%d DE %B DEL %Y'
+
   will_paginate:
     previous_label: "&#8592; Aneriores"
     next_label: "Siguientes &#8594;"
@@ -54,20 +53,28 @@ es:
         name: Nombre
         event_date: Fecha y hora
         id: Folio
+        addressed_to: Dirigido a
+        street_name: Calle
+        office_number: Número de oficio
+        shift: Turno
       person:
         first_name: Nombre
         last_name1: Apellido paterno
         last_name2: Apellido materno
-        status_id: Estatus
+        status_id: Estatus de persona
+        birth_date: Fecha de nacimiento
       crimes:
         crime: Delito
+      items:
+          kind: Tipo
+          quantity: Cantidad
+          observations: Descripción
     models:
       iph: Informe Policial Homologado
       person: Personas
-      
-    
-    
-        
+      items: Objetos
+
+
   iph: Informe Policial Homologado
   date:
     abbr_day_names:

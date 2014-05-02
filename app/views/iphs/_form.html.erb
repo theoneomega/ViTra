@@ -17,8 +17,6 @@
         </div>
       </div>
 
-
-
       <div class="form-group">
         <%= f.label :infraction_id, "Motivo", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
@@ -29,7 +27,7 @@
       <div class="form-group">
         <%= f.label :addressed_to, "Dirigido a", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.text_field :addressed_to, :class => "form-control", :value => "Comisario Raul Avila Ibarra", :readonly => true %>
+          <%= f.text_field :addressed_to, :class => "form-control" %>
         </div>
       </div>
       <div class="form-group">
@@ -50,12 +48,21 @@
           <%= f.text_field :event_date, :class => "form-control", :readonly => true %>
         </div>
       </div>
+      
       <div class="form-group">
-        <%= f.label :coordinator_id, "Nombre del Coordinador", :class => "col-sm-2 control-label" %>
+        <%= f.label :coordinator_name, "Nombre del Coordinador", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= f.collection_select( :coordinator_id, Coordinator.all, :id, :name, {:prompt => "SELECCIONE"}, :class => "form-control") %>
+          <%= f.text_field :coordinator_name, :class => "form-control"  %>
         </div>
       </div>
+      
+      
+      <%#*<div class="form-group">%>
+        <%#= f.label :coordinator_id, "Nombre del Coordinador", :class => "col-sm-2 control-label" %>
+        <%#*<div class="col-sm-10">%>
+          <%#= f.collection_select( :coordinator_id, Coordinator.all, :id, :name, {:prompt => "SELECCIONE"}, :class => "form-control") %>
+        <%#*</div>%>
+      <%#*</div>%>
       <div class="form-group">
         <%= f.label :commander_id, "Nombre del Comandante en Turno", :class => "col-sm-2 control-label" %>
         <div class="col-sm-10">
@@ -99,20 +106,11 @@
           <%= f.collection_select(:suburb_id, Suburb.order("description ASC").all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
         </div>
       </div>
-
-
-
     </div>
-  <%#*<div class="form-group">%>
-  <%#= f.label :street_id, "Calle", :class => "col-sm-2 control-label" %>
-  <%#*<div class="col-sm-10">%>
-  <%#= f.collection_select(:street_id, Street.order("description ASC").all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
-  <%#*</div>%>
-  <%#*</div>%>
     <%= f.hidden_field :street_id %>
 
     <div class="form-group">
-      <%= f.label :street_name, :class => "col-sm-2 control-label" %>
+      <%= f.label :street_name, "Calle", :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_field :street_name, :class => "form-control" %>
       </div>
@@ -198,78 +196,6 @@
   </p>
 
 
-  <p>
-    <%=f.fields_for :drugs do |builder| %>
-      <%= render 'drugs_fields', :f => builder %>
-    <%end%>
-  </p>
-
-  <div class="form-group">
-    <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-beaker">  Agregar Drogas</i>'.html_safe, :drugs, :class => "btn btn-success" %>
-    </div>
-  </div>
-  <p>
-    <%=f.fields_for :weapons do |builder| %>
-      <%= render 'weapons_fields', :f => builder %>
-    <%end%>
-  </p>
-
-  <div class="form-group">
-    <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-target-3">  Agregar Armas</i>'.html_safe, :weapons, :class => "btn btn-success" %>
-    </div>
-  </div>
-
-  <p>
-    <%=f.fields_for :money do |builder| %>
-      <%= render 'money_fields', :f => builder %>
-    <%end%>
-  </p>
-
-  <div class="form-group">
-    <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-money-1">  Agregar Dinero</i>'.html_safe, :money, :class => "btn btn-success" %>
-    </div>
-  </div>
-
-
-  <p>
-    <%=f.fields_for :tactical_equipments do |builder| %>
-      <%= render 'tactical_equipment_fields', :f => builder %>
-    <%end%>
-  </p>
-
-  <div class="form-group">
-    <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-police">  Agregar Equipo Tactico</i>'.html_safe, :tactical_equipments, :class => "btn btn-success" %>
-    </div>
-  </div>
-
-  <p>
-    <%=f.fields_for :documents do |builder| %>
-      <%= render 'documents_fields', :f => builder %>
-    <%end%>
-  </p>
-
-  <div class="form-group">
-    <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-doc-add">  Agregar Documentos</i>'.html_safe, :documents, :class => "btn btn-success" %>
-    </div>
-  </div>
-
-
-  <p>
-    <%=f.fields_for :multimedium do |builder| %>
-      <%= render 'multimedia_fields', :f => builder %>
-    <%end%>
-  </p>
-
-  <div class="form-group">
-    <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="glyphicon glyphicon-picture">  Agregar Multimedia</i>'.html_safe, :multimedium, :class => "btn btn-success" %>
-    </div>
-  </div>
 
   <p>
     <%=f.fields_for :items do |builder| %>
@@ -279,7 +205,7 @@
 
   <div class="form-group">
     <div class="col-sm-2 col-sm-10">
-      <%= f.link_to_add '<i class="icon icon-list-alt">  Agregar otros objetos</i>'.html_safe, :items, :class => "btn btn-success" %>
+      <%= f.link_to_add '<i class="icon icon-list-alt">  Agregar objetos</i>'.html_safe, :items, :class => "btn btn-success" %>
     </div>
   </div>
 

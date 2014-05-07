@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140502163241) do
+ActiveRecord::Schema.define(:version => 20140506190817) do
 
   create_table "assignments", :force => true do |t|
     t.integer "localuser_id",   :precision => 38, :scale => 0
@@ -97,34 +97,35 @@ ActiveRecord::Schema.define(:version => 20140502163241) do
   create_table "iphs", :force => true do |t|
     t.string   "office_number"
     t.datetime "event_date"
-    t.integer  "patrol_id",         :precision => 38, :scale => 0
-    t.integer  "officer_id",        :precision => 38, :scale => 0
-    t.integer  "infraction_id",     :precision => 38, :scale => 0
+    t.integer  "patrol_id",              :precision => 38, :scale => 0
+    t.integer  "officer_id",             :precision => 38, :scale => 0
+    t.integer  "infraction_id",          :precision => 38, :scale => 0
     t.string   "addressed_to"
-    t.boolean  "operative",         :precision => 1,  :scale => 0
+    t.boolean  "operative",              :precision => 1,  :scale => 0
     t.string   "operative_name"
-    t.integer  "coordinator_id",    :precision => 38, :scale => 0
-    t.integer  "commander_id",      :precision => 38, :scale => 0
+    t.integer  "coordinator_id",         :precision => 38, :scale => 0
+    t.integer  "commander_id",           :precision => 38, :scale => 0
     t.string   "state"
-    t.integer  "township_id",       :precision => 38, :scale => 0
-    t.integer  "district_id",       :precision => 38, :scale => 0
-    t.integer  "sector_id",         :precision => 38, :scale => 0
+    t.integer  "township_id",            :precision => 38, :scale => 0
+    t.integer  "district_id",            :precision => 38, :scale => 0
+    t.integer  "sector_id",              :precision => 38, :scale => 0
     t.string   "shift"
-    t.integer  "suburb_id",         :precision => 38, :scale => 0
-    t.integer  "street_id",         :precision => 38, :scale => 0
+    t.integer  "suburb_id",              :precision => 38, :scale => 0
+    t.integer  "street_id",              :precision => 38, :scale => 0
     t.string   "exterior_number"
     t.string   "interior_number"
-    t.integer  "zip",               :precision => 38, :scale => 0
+    t.integer  "zip",                    :precision => 38, :scale => 0
     t.string   "between_streets"
     t.string   "references"
-    t.boolean  "road",              :precision => 1,  :scale => 0
+    t.boolean  "road",                   :precision => 1,  :scale => 0
     t.string   "road_name"
-    t.integer  "kilometer",         :precision => 38, :scale => 0
+    t.integer  "kilometer",              :precision => 38, :scale => 0
     t.text     "facts_description"
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.string   "street_name"
     t.string   "coordinator_name"
+    t.string   "qualifier_officer_name"
   end
 
   create_table "items", :force => true do |t|
@@ -190,24 +191,25 @@ ActiveRecord::Schema.define(:version => 20140502163241) do
     t.string   "nacionality"
     t.string   "ethni_group"
     t.datetime "birth_date"
-    t.integer  "age",                   :precision => 38, :scale => 0
+    t.integer  "age",                    :precision => 38, :scale => 0
     t.string   "rfc"
     t.string   "sex"
     t.string   "domicile"
-    t.integer  "status_id",             :precision => 38, :scale => 0
+    t.integer  "status_id",              :precision => 38, :scale => 0
     t.string   "residencial_status"
     t.string   "profession"
     t.string   "pupilage"
-    t.integer  "particular_phone",      :precision => 38, :scale => 0
-    t.integer  "mobile_phone",          :precision => 38, :scale => 0
+    t.integer  "particular_phone",       :precision => 38, :scale => 0
+    t.integer  "mobile_phone",           :precision => 38, :scale => 0
     t.text     "observations"
     t.string   "detention_ubication"
     t.string   "at_disposal_of"
-    t.integer  "official_qualifier_id", :precision => 38, :scale => 0
+    t.integer  "official_qualifier_id",  :precision => 38, :scale => 0
     t.string   "shift"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
-    t.integer  "iph_id",                :precision => 38, :scale => 0
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
+    t.integer  "iph_id",                 :precision => 38, :scale => 0
+    t.string   "qualifier_officer_name"
   end
 
   create_table "permissions", :force => true do |t|

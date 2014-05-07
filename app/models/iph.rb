@@ -5,8 +5,11 @@ class Iph < ActiveRecord::Base
   attr_accessible :operative, :operative_name, :patrol_id, :references, :road, :road_name 
   attr_accessible :sector_id, :shift, :state, :street_id, :suburb_id, :township_id, :zip, :person_attributes, :iph_id
   attr_accessible :vehicles_attributes, :drugs_attributes, :weapons_attributes, :money_attributes, :tactical_equipments_attributes
-  attr_accessible :documents_attributes, :multimedium_attributes, :items_attributes, :street_name, :between, :coordinator_name
+  attr_accessible :documents_attributes, :multimedium_attributes, :items_attributes, :street_name, :between, :coordinator_name, :qualifier_officer_name
   #  autocomplete :officer, :first_name, :full => true
+  
+  
+  
   belongs_to :officer
   belongs_to :infraction
   belongs_to :coordinator
@@ -16,6 +19,16 @@ class Iph < ActiveRecord::Base
   belongs_to :suburb
   belongs_to :sector
   belongs_to :street
+  
+  searchable do
+    text :between_streets, :id.to_s
+    text :facts_description, :boost => 2.0
+    integer :id
+    
+    text :infraccion do
+      infraction.description
+    end
+  end
   
   def street_name
     street.description if street_id
@@ -29,9 +42,9 @@ class Iph < ActiveRecord::Base
   def multa
     infraction.description if infraction_id
   end
-#  def street_name=(description)
-#    self.street_id = Street.find_by_description(description) unless description.blank?
-#  end
+  #  def street_name=(description)
+  #    self.street_id = Street.find_by_description(description) unless description.blank?
+  #  end
   
   has_many :person, :dependent => :destroy
   has_many :vehicles, :dependent => :destroy
@@ -45,12 +58,12 @@ class Iph < ActiveRecord::Base
   
   validates :officer_id, :presence => true
   validates :infraction_id, :presence => true
-  validates :coordinator_name, :presence => true
+#  validates :coordinator_name, :presence => true
   validates :commander_id, :presence => true
   validates :sector_id, :presence => true
   validates :district_id, :presence => true
   validates :event_date, :presence => true
-  validates :addressed_to, :presence => true
+#  validates :addressed_to, :presence => true
   validates :street_name, :presence => true
   validates :office_number, :presence => true
   validates :shift, :presence => true
@@ -64,5 +77,8 @@ class Iph < ActiveRecord::Base
   accepts_nested_attributes_for :documents, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :multimedium, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :items, :allow_destroy => true, :reject_if => :all_blank
+  
+  
+ 
   
 end

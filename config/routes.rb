@@ -1,4 +1,7 @@
 ViTra::Application.routes.draw do
+ 
+  
+  get "search/index", :as => :searches
 
   get "autocomplete/index"
 

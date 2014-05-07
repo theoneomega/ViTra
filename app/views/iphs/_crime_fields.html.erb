@@ -2,6 +2,7 @@
   <div class="form-group">
     <%= f.label :crime_id, "Delito", :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:crime_id, Crime.all, :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
+      <%= f.collection_select(:crime_id, Crime.order("description asc"), :id, :description, {:prompt => "SELECCIONE"}, :class => "form-control") %>
+      <%=f.link_to_remove '<i class="glyphicon glyphicon-trash">  Remover</i>'.html_safe,:class => 'btn btn-danger'%>
     </div>
   </div>

@@ -43,7 +43,7 @@
     </p>
     <p>
       <b >Dirigido a</b>
-    <u ><%= @iph.addressed_to.upcase %></u>
+    <u ><%= @iph.addressed_to.upcase if @iph.addressed_to %></u>
     </p>
     <p>
       <b >Oficial</b>
@@ -82,7 +82,7 @@
     <u ><%= @iph.state.upcase %></u>
 
     <b >Municipio</b>
-    <u ><%= @iph.township.description.upcase %></u>
+    <u ><%= @iph.township.description.upcase if @iph.township%></u>
     </p>
     <p>
       <b >Distrito</b>
@@ -96,7 +96,7 @@
     </p>
     <p>
       <b >Localidad</b>
-    <u ><%= @iph.township.description.upcase %></u>
+    <u ><%= @iph.township.description.upcase if @iph.township %></u>
     <b >Colonia</b>
     <% if @iph.suburb %>
       <u ><%= @iph.suburb.description.upcase %></u>
@@ -121,7 +121,7 @@
     <u ><%= @iph.between_streets.upcase if @iph.between_streets %></u>
     </p>
     <p>
-      <b >References:</b>
+      <b >Referencias:</b>
     <u ><%= @iph.references.upcase if @iph.references %></u>
     </p>
     <p>
@@ -169,9 +169,9 @@
       </p>
       <p>
         <b >Alias</b>
-      <u ><%= person.alias.upcase %></u>
+      <u ><%= person.alias.upcase if person.alias %></u>
       <b >Nacionalidad </b>
-      <u ><%= person.nacionality.upcase %></u>
+      <u ><%= person.nacionality.upcase if person.nacionality %></u>
       <b >Grupo Étnico </b>
       <u ><%= person.ethni_group.upcase if person.ethni_group%></u>
       </p>
@@ -256,9 +256,9 @@
       <b >Marca </b>
       <u ><%= vehicle.brand.description.upcase %></u>
       <b >Linea</b>
-      <u ><%= vehicle.sub_brand.description.upcase %></u>
+      <u ><%= vehicle.sub_brand.description.upcase  if vehicle.sub_brand %></u>
       <b >Modelo </b>
-      <u ><%=I18n.l vehicle.vehicle_year, :format => "%Y" %></u>
+      <u ><%=I18n.l vehicle.vehicle_year, :format => "%Y" if vehicle.vehicle_year %></u>
       </p>
       <p>
         <b >Matricula</b>
@@ -266,7 +266,7 @@
       <b >Color </b>
       <u ><%= vehicle.color.upcase %></u>
       <b >Numero motor</b>
-      <u ><%= vehicle.engine_serial.upcase %></u>
+      <u ><%= vehicle.engine_serial.upcase if vehicle.engine_serial %></u>
       </p>
       <p>
         <b >Numero de serie</b>

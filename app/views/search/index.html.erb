@@ -1,11 +1,37 @@
+<div class="search form-inline" style="margin: 0px auto; padding: 0px; width: 100%; "  >
+    <%= form_tag searches_path, :method => :get do %>
 
-<div class="page-header">
-  <%= link_to new_iph_path, :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    Registrar  IPH
-  <% end %>
-  <h1>Listado </h1>
-</div>
+
+      <div style="float: left; margin: 10px; "  >
+        <div class="input-append" >
+          <label style="color: white"> Que contenga la(s) palabra(s): </label> <br >
+          <%= text_field_tag :search1, params[:search1]%>
+          <span class="add-on"><i class="icon-search"></i></span>
+        </div> 
+      </div>
+
+      <%#*<div style="float: left; margin: 10px;">%>
+
+        <%#*<div id="datetimepicker" class="input-append date">%>
+          <%#*<label style="color: white" >Inicio</label><br >%> 
+          <%#= text_field_tag :date %>
+          <%#*<span class="add-on"><i class="icon-calendar"></i></span>%>
+        <%#*</div>%>
+        <%#*<br>%>
+        <%#*<div id="datetimepicker" class="input-append date">%>
+          <%#*<label style="color: white" >Fecha fin</label><br >%>
+          <%#= text_field_tag :date_end %>
+          <%#*<span class="add-on"><i class="icon-calendar"></i></span>%>
+        <%#*</div>%>
+      <%#*</div>%>
+      <br>
+      <div style="clear: both;">
+        <%= button_tag( :class => "btn btn-success") do %>
+          <i class="icon-search icon-white"> </i> <%="Buscar"%>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
@@ -14,7 +40,7 @@
         <th>Fecha</th>
         <th>Oficial</th>
         <th>Delito y/o falta administrativa</th>
-        <%#*<th>Coordinador</th>%>
+        <th>Coordinador</th>
         <th>Comandante en turno</th>
         <th>Distrito</th>
         <th>Sector</th>
@@ -26,17 +52,16 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @iphs) do |iph| %>
+      <%= content_tag_for(:tr, @searches) do |iph| %>
       <td><%=I18n.l iph.event_date, :format => :short %></td>
       <td><%= iph.officer.name %></td>
       <td><%= iph.infraction.description %></td>
-      <!-- <td><%#= iph.coordinator_name %></td> -->
+      <td><%= iph.coordinator_name %></td>
       <td><%= iph.commander.name %></td>
       <td><%= iph.district.description %></td>
       <td><%= iph.sector.description %></td>
-      <td><%= iph.suburb.description if iph.suburb%></td>
       <td><%= iph.shift %></td>
-      
+      <td><%= iph.suburb.description if iph.suburb%></td>
       <td><%= iph.street.description %></td>
       <td>
         <ul class="nav nav-pills">

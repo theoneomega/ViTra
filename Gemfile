@@ -9,7 +9,9 @@ gem 'rails', '3.2.16'
 gem 'sqlite3'
 gem 'seed_dump'
 
-
+gem 'roles_ui', git: 'http://github.com/paupauorg/roles-ui.git'
+gem 'devise'
+gem 'cancan'
 
 gem 'thin'
 #gem 'puma'
@@ -18,7 +20,7 @@ gem "awesome_nested_fields"
 gem 'rails3-jquery-autocomplete'
 gem "jquery-ui-rails"
 gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "less-rails", '~>2.3.3' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails", '= 2.2.6'
 gem 'bootstrap-generators'
 gem 'ruby-oci8', '= 2.1.6'

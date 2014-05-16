@@ -2,7 +2,7 @@ class IphsController < ApplicationController
   # GET /iphs
   # GET /iphs.json
   def index
-    @iphs = Iph.all
+    @iphs = Iph.order('created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,6 +79,11 @@ class IphsController < ApplicationController
       format.html { redirect_to iphs_url }
       format.json { head :no_content }
     end
+  end
+  
+  
+  def print
+    @iphs = Iph.order('created_at desc')
   end
   
   def get_sectors 

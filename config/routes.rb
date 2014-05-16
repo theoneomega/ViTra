@@ -1,6 +1,9 @@
 ViTra::Application.routes.draw do
  
-  
+
+  resources :users
+
+
   get "search/index", :as => :searches
 
   get "autocomplete/index"
@@ -59,7 +62,11 @@ ViTra::Application.routes.draw do
   resources :weapons_types
 
   get 'iphs/get_sectors'
-  resources :iphs
+  resources :iphs do
+    collection do
+      get :print
+    end
+  end
 
 
   resources :documents

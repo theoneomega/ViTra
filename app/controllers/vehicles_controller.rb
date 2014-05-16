@@ -83,7 +83,7 @@ class VehiclesController < ApplicationController
   
   def get_sub_brands
     p"Entro"
-    @sub_brand = SubBrand.where(:brand_id => params[:id])
+    @sub_brand = SubBrand.where(:brand_id => params[:id]).order("description asc")
     render json: @sub_brand, :callback => params[:callback] 
   end
 end

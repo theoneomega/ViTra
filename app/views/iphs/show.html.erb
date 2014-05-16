@@ -25,21 +25,21 @@
     <u ><%= @iph.id %></u>
 
     <b>Numero de oficio</b>
-    <u ><%= @iph.office_number.upcase %></u>
+    <u ><%= @iph.office_number.upcase if @iph.office_number %></u>
 
     <b  >Fecha y hora del evento</b>
     <u ><%=I18n.l @iph.event_date, :format => "%d de %B del %Y a las %H:%M hrs" %></u>
     </p>
     <p style="padding-left:1em">
       <b  >Numero Ece. Transporte</b>
-    <u ><%= @iph.officer.patrol.description.upcase %></u>
+    <u ><%= @iph.officer.patrol.description.upcase if @iph.officer.patrol %></u>
 
     <b  >No. de Oficial</b>
     <u ><%= @iph.officer.id %></u>
     </p>
     <p>
       <b >Motivo</b>
-    <u ><%= @iph.infraction.description.upcase %></u>
+    <u ><%= @iph.infraction.description.upcase if @iph.infraction %></u>
     </p>
     <p>
       <b >Dirigido a</b>
@@ -47,7 +47,7 @@
     </p>
     <p>
       <b >Oficial</b>
-    <u ><%= @iph.officer.name.upcase %></u>
+    <u ><%= @iph.officer.name.upcase if @iph.officer %></u>
     </p>
     <p>
       <b >Operativo</b>
@@ -58,7 +58,7 @@
       <u > SI</u>
 
       <b >Nombre del Operativo</b>
-      <u ><%= @iph.operative_name.upcase %></u>
+      <u ><%= @iph.operative_name.upcase if @iph.operative_name %></u>
 
     <%  end %>
     </p>
@@ -68,7 +68,7 @@
     </p>
     <p>
       <b >Nombre del Comandante en turno  </b>
-    <u ><%= @iph.commander.name.upcase %></u>
+    <u ><%= @iph.commander.name.upcase if @iph.commander %></u>
     </p>
   </div>
 
@@ -86,25 +86,25 @@
     </p>
     <p>
       <b >Distrito</b>
-    <u ><%= @iph.district.description.upcase %></u>
+    <u ><%= @iph.district.description.upcase if @iph.district %></u>
 
     <b >Sector</b>
-    <u ><%= @iph.sector.description.upcase %></u>
+    <u ><%= @iph.sector.description.upcase if @iph.sector %></u>
 
     <b >Turno</b>
-    <u ><%= @iph.shift.upcase %></u>
+    <u ><%= @iph.shift.upcase if @iph.shift %></u>
     </p>
     <p>
       <b >Localidad</b>
     <u ><%= @iph.township.description.upcase if @iph.township %></u>
     <b >Colonia</b>
     <% if @iph.suburb %>
-      <u ><%= @iph.suburb.description.upcase %></u>
+      <u ><%= @iph.suburb.description.upcase if @iph.suburb %></u>
     <% end %>
     </p>
     <p>
       <b >Calle</b>
-    <u ><%= @iph.street.description.upcase %></u>
+    <u ><%= @iph.street.description.upcase if @iph.street %></u>
 
     <b >Numero Interior</b>
     <u ><%= @iph.interior_number %></u>
@@ -161,11 +161,11 @@
     <div class="panel-body">
       <p>
         <b >Apellido Paterno</b>
-      <u ><%= person.last_name1.upcase %></u>
+      <u ><%= person.last_name1.upcase if person.last_name1%></u>
       <b >Apellido Materno</b>
-      <u ><%= person.last_name2.upcase %></u>
+      <u ><%= person.last_name2.upcase if person.last_name2%></u>
       <b >Nombre(s)</b>
-      <u ><%= person.first_name.upcase %></u>
+      <u ><%= person.first_name.upcase if person.first_name%></u>
       </p>
       <p>
         <b >Alias</b>
@@ -177,13 +177,13 @@
       </p>
       <p>
         <b >Fecha de Nacimiento</b>
-      <u ><%= person.birth_date %></u>
+      <u ><%= I18n.l person.birth_date, :format => :default if person.birth_date %></u>
       <b >Edad</b>
       <u ><%= person.age %></u>
-      <b >RFC</b>
+      <b >CURP/RFC</b>
       <u ><%= person.rfc.upcase if person.rfc %></u>
       <b >Sexo</b>
-      <u ><%= person.sex.upcase %></u>
+      <u ><%= person.sex.upcase if person.sex %></u>
       </p>
       <p>
         <b >Domicilio</b>
@@ -191,9 +191,9 @@
       </p>
       <p>
         <b >Clasificacion</b>
-      <u ><%= person.status.description.upcase %></u>
+      <u ><%= person.status.description.upcase if person.status.description %></u>
       <b >Grupo Étnico </b>
-      <u ><%= person.residencial_status.upcase %></u>
+      <u ><%= person.residencial_status.upcase if person.residencial_status %></u>
       </p>
     </div>
 
@@ -228,7 +228,7 @@
       </p>
       <p>
         <b >Observaciones</b>
-      <u ><%= person.observations.upcase %> </u>
+      <u ><%= person.observations.upcase if person.observations %> </u>
       </p>
     </div>
 
@@ -239,9 +239,25 @@
       <div class="panel-body">
         <p>
           <b >Motivo de la detencion</b>
-        <u > <%= @iph.infraction.description.upcase %></u>
-
+        <u > <%= @iph.infraction.description.upcase if @iph.infraction %></u>
         </p>
+
+        <p>
+          <b >Ubicación del detenido:</b>
+        <u > <%= person.detention_ubication %></u>
+        </p>
+        <p>
+          <b>Autoridad a la que fue puesta a disposición:</b>
+        <u> <%= person.at_disposal_of %>
+        </u>
+        </p>
+        
+          <p>
+          <b>Nombre y cargo de quien recibió:</b>
+        <u> <%= person.qualifier_officer_name if person.qualifier_officer_name %>
+        </u>
+        </p>
+
       </div>
     <% end %>
   <%end%>
@@ -252,9 +268,9 @@
     <div class="panel-body">
       <p>
         <b >Tipo</b>
-      <u ><%= vehicle.kind.description.upcase %></u>
+      <u ><%= vehicle.kind.description.upcase if vehicle.kind %></u>
       <b >Marca </b>
-      <u ><%= vehicle.brand.description.upcase %></u>
+      <u ><%= vehicle.brand.description.upcase if vehicle.brand %></u>
       <b >Linea</b>
       <u ><%= vehicle.sub_brand.description.upcase  if vehicle.sub_brand %></u>
       <b >Modelo </b>
@@ -262,24 +278,24 @@
       </p>
       <p>
         <b >Matricula</b>
-      <u ><%= vehicle.plate.upcase %></u>
+      <u ><%= vehicle.plate.upcase if vehicle.plate %></u>
       <b >Color </b>
-      <u ><%= vehicle.color.upcase %></u>
+      <u ><%= vehicle.color.upcase if vehicle.color %></u>
       <b >Numero motor</b>
       <u ><%= vehicle.engine_serial.upcase if vehicle.engine_serial %></u>
       </p>
       <p>
         <b >Numero de serie</b>
-      <u ><%= vehicle.serial_number.upcase %></u>
+      <u ><%= vehicle.serial_number.upcase if vehicle.serial_number %></u>
       <b >Uso </b>
-      <u ><%= vehicle.usage.upcase %></u>
+      <u ><%= vehicle.usage.upcase if vehicle.usage %></u>
       <b >Capacidad de pasajeros</b>
       <u ><%= vehicle.capacity %></u>
       </p>
 
       <p>
         <b >Procedencia</b>
-      <u ><%= vehicle.precedence.upcase %></u>
+      <u ><%= vehicle.precedence.upcase if vehicle.precedence %></u>
       <b >Empresa </b>
       <u ><%= vehicle.company.upcase if vehicle.company %></u>
       <b >Capacidad de carga</b>
@@ -287,7 +303,7 @@
       </p>
       <p>
         <b >Observaciónes</b>
-      <u ><%= vehicle.observations.upcase %></u>
+      <u ><%= vehicle.observations.upcase if vehicle.observations %></u>
       </p>
     </div>
   <%end%>
@@ -302,15 +318,15 @@
         <b >Tipo</b>
       <u ><%= weapon.weapons_type.description.upcase if weapon.weapons_type %></u>
       <b >Tipo</b>
-      <u ><%= weapon.description.upcase %></u>
+      <u ><%= weapon.description.upcase if weapon.description %></u>
       </p>
       <p>
         <b >Marca </b>
-      <u ><%= weapon.brand.upcase %></u>
+      <u ><%= weapon.brand.upcase if weapon.brand %></u>
       <b >Tipo </b>
       <u ><%= weapon.weapon_type.upcase if weapon.weapon_type %></u>
       <b >Calibre </b>
-      <u ><%= weapon.caliber.upcase %></u>
+      <u ><%= weapon.caliber.upcase if weapon.caliber %></u>
       <b >Serie </b>
       <u ><%= weapon.serial.upcase if weapon.serial%></u>
       </p>
@@ -445,7 +461,7 @@
     <div class="panel-body">
       <p>
         <b >Tipo</b>
-      <u><%= multimedia.kind.upcase %></u>
+      <u><%= multimedia.kind.upcase if multimedia.kind %></u>
       <b >Cantidad</b>
       <u><%= multimedia.quantity %></u>
       </p>

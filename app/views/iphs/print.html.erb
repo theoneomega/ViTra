@@ -1,0 +1,44 @@
+<center>
+  <div  style="font-size: 90%; width: 600px;" >
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr class="active">
+          <th >Fecha de detención</th>
+          <th>Fecha de Registro </th>
+          <th>Oficial</th>
+          <th>Delito y/o falta administrativa</th>
+          <th>Comandante en turno</th>
+          <th>Folio</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <%= content_tag_for(:tr, @iphs) do |iph| %>
+          <tr  class="<%= cycle('success', '') -%>">
+            <td><%=I18n.l iph.event_date, :format => :short %></td>
+            <td><%= I18n.l iph.created_at, :format => :short %> </td>
+            <td><%= iph.officer.name %></td>
+            <td><%= iph.infraction.description %></td>
+            <td><%= iph.commander.name %></td>
+            <td><%= iph.id %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</center>
+<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation" style="margin-bottom:0px;margin-left:0px;margin-right:0px;clear:both;">
+  <div class="container">
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li> <%= link_to_function('<i class="icon icon-print">Imprimir</i>'.html_safe, "javascript:print()")  %></li>
+        <li> 
+          <%= link_to iphs_path do%>
+            <i class="icon icon-back">Regresar</i>
+          <%end%>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

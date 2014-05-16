@@ -33,7 +33,7 @@
     <dd><%= @person.ethni_group %></dd>
 
     <dt>Birth date:</dt>
-    <dd><%=I18n.l @person.birth_date, :format => "%d/%m/%Y" %></dd>
+    <dd><%=I18n.l @person.birth_date, :format => "%d/%m/%Y" if @person.birth_date %></dd>
 
     <dt>Age:</dt>
     <dd><%= @person.age %></dd>

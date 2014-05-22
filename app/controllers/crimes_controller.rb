@@ -1,4 +1,6 @@
 class CrimesController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /crimes
   # GET /crimes.json
   def index

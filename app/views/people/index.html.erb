@@ -10,16 +10,16 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-            <th>Name</th>
-            <th>Nacionality</th>
-            <th>Age</th>
-            <th>Sex</th>
-            <th>Status</th>
-            <th>Mobile phone</th>
-            <th>Detention ubication</th>
-            <th>At disposal of</th>
-            <th>Shift</th>
-            <th></th>
+        <th>Name</th>
+        <th>Nacionality</th>
+        <th>Age</th>
+        <th>Sex</th>
+        <th>Status</th>
+        <th>Mobile phone</th>
+        <th>Detention ubication</th>
+        <th>At disposal of</th>
+        <th>Shift</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -27,20 +27,20 @@
 
     <tbody>
       <%= content_tag_for(:tr, @people) do |person| %>
-            <td><%= person.id %></td>
-            <td><%= person.first_name %> <%= person.last_name1 %> <%= person.last_name2 %></td>
-            <td><%= person.nacionality %></td>
-            <td><%= person.age %></td>
-            <td><%= person.sex %></td>
-            <td><%= person.status_id %></td>
-            <td><%= person.mobile_phone %></td>
-            <td><%= person.detention_ubication %></td>
-            <td><%= person.at_disposal_of %></td>
-            <td><%= person.shift %></td>
-            <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+      <td><%= person.id %></td>
+      <td><%= person.first_name %> <%= person.last_name1 %> <%= person.last_name2 %></td>
+      <td><%= person.nacionality %></td>
+      <td><%= person.age %></td>
+      <td><%= person.sex %></td>
+      <td><%= person.status_id %></td>
+      <td><%= person.mobile_phone %></td>
+      <td><%= person.detention_ubication %></td>
+      <td><%= person.at_disposal_of %></td>
+      <td><%= person.shift %></td>
+      <td><%= link_to 'Show', person %></td>
+      <td><%= link_to 'Edit', edit_person_path(person) %></td>
+      <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
     </tbody>
   </table>
 </div>

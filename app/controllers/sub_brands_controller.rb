@@ -1,4 +1,6 @@
 class SubBrandsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /sub_brands
   # GET /sub_brands.json
   def index

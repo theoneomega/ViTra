@@ -1,4 +1,6 @@
 class MoneyController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /money
   # GET /money.json
   def index

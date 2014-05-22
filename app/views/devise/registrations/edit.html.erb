@@ -1,0 +1,30 @@
+<h2>Editar Usuario</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.label :email, "Correo electronico" %> <br />
+    <%= f.email_field :email, required: true, autofocus: true %> <br/>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+    <%= f.label :password, "Contraseña" %> <br />
+    <%= f.password_field :password %> <br/>
+    <%= f.hint "Dejar en blanco si no desea cambiar la contraseña" %>
+    <%= f.label :password_confirmation, "Confirma contraseña" %> <br/>
+    <%= f.password_field :password_confirmation %> <br/>
+    <%= f.label :current_password, "Contraseña actual" %> <br />
+    <%= f.password_field :current_password, required: true %><br/>
+    <%= f.hint "Se necesita la contraseña actual para confirmar los cambios" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Actualizar" , :class => "btn btn-primary"%> | <%= link_to "Regresar", :back , :class => "btn btn-danger"%>
+  </div>
+<% end %>
+
+
+

@@ -1,4 +1,6 @@
 class StreetsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /streets
   # GET /streets.json
   def index

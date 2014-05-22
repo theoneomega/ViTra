@@ -4,7 +4,7 @@
     <span class="glyphicon glyphicon-plus"></span>
     Registrar  IPH
   <% end %>
-  <h1><i class="icon-spin2 animate-spin"></i>Total:   <%= @iphs.count%> registrados</h1>
+  <h1><i class="icon-spin6 animate-spin"></i>Total:   <%= @iphs.count%> registrados</h1>
 </div>
 
 <div class="table-responsive">
@@ -17,6 +17,9 @@
         <th>Delito y/o falta administrativa</th>
         <th>Comandante en turno</th>
         <th>Folio</th>
+        <% if current_user.admin? %>
+        <th>Creado por:</th>
+        <%end%>
         <th></th>
       </tr>
     </thead>
@@ -28,16 +31,22 @@
       <td><%= iph.officer.name %></td>
       <td><%= iph.infraction.description %></td>
       <td><%= iph.commander.name %></td>
-      
       <td><%= iph.id %></td>
+      <td> <%= iph.user.username if current_user.admin?  %> </td>
       <td>
         <ul class="nav nav-pills">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='Acciones'>Acciones<i class="icon-down-dir"></i>&nbsp;<i class="icon-caret-down"></i></a>
             <ul class="dropdown-menu">
-              <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> Mostrar'.html_safe, iph %></li>
-              <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_iph_path(iph)%></li>
-              <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-trash"></i> Eliminar'.html_safe, iph, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+              <% if can? :show, Iph %>
+                <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> Mostrar'.html_safe, iph %></li>
+              <% end %>
+              <% if can? :edit, Iph %>
+                <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-pencil"></i> Editar'.html_safe, edit_iph_path(iph)%></li>
+              <% end %>
+              <% if can? :delete, Iph %>
+                <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-trash"></i> Eliminar'.html_safe, iph, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+              <% end %>
             </ul>
           </li>
         </ul>

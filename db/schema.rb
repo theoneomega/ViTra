@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140514192821) do
+ActiveRecord::Schema.define(:version => 20140522174334) do
 
   create_table "assignments", :force => true do |t|
-    t.integer "localuser_id",   :precision => 38, :scale => 0
+    t.integer "user_id",        :precision => 38, :scale => 0
     t.string  "localuser_type"
     t.integer "role_id",        :precision => 38, :scale => 0
   end
 
-  add_index "assignments", ["localuser_id", "localuser_type"], :name => "i_ass_loc_id_loc_typ"
+  add_index "assignments", ["user_id", "localuser_type"], :name => "i_ass_loc_id_loc_typ"
 
   create_table "brands", :force => true do |t|
     t.string   "description"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20140514192821) do
     t.string   "street_name"
     t.string   "coordinator_name"
     t.string   "qualifier_officer_name"
+    t.integer  "user_id",                :precision => 38, :scale => 0
   end
 
   create_table "items", :force => true do |t|
@@ -212,6 +213,38 @@ ActiveRecord::Schema.define(:version => 20140514192821) do
     t.string   "qualifier_officer_name"
   end
 
+  create_table "permissions", :force => true do |t|
+    t.integer  "role_id",    :precision => 38, :scale => 0
+    t.string   "name"
+    t.string   "resource"
+    t.string   "condition"
+    t.boolean  "cannot",     :precision => 1,  :scale => 0
+    t.integer  "priority",   :precision => 38, :scale => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "permissions", ["name"], :name => "index_permissions_on_name"
+  add_index "permissions", ["role_id", "name"], :name => "i_permissions_role_id_name"
+
+  create_table "photos", :force => true do |t|
+    t.string   "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size",    :precision => 38, :scale => 0
+    t.datetime "image_updated_at"
+    t.integer  "person_id",          :precision => 38, :scale => 0
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "sectors", :force => true do |t|
     t.string   "description"
@@ -219,6 +252,16 @@ ActiveRecord::Schema.define(:version => 20140514192821) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "statuses", :force => true do |t|
     t.string   "description"
@@ -262,6 +305,31 @@ ActiveRecord::Schema.define(:version => 20140514192821) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.datetime "created_at",                                                            :null => false
+    t.datetime "updated_at",                                                            :null => false
+    t.string   "email",                                                 :default => "", :null => false
+    t.string   "encrypted_password",                                    :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :precision => 38, :scale => 0, :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.boolean  "admin",                  :precision => 1,  :scale => 0
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "i_users_reset_password_token", :unique => true
+
+  create_table "users_roles", :id => false, :force => true do |t|
+    t.integer "role_id", :precision => 38, :scale => 0
+    t.integer "user_id", :precision => 38, :scale => 0
   end
 
   create_table "vehicles", :force => true do |t|

@@ -1,4 +1,6 @@
 class WeaponsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /weapons
   # GET /weapons.json
   def index

@@ -1,4 +1,6 @@
 class OfficialQualifiersController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /official_qualifiers
   # GET /official_qualifiers.json
   def index

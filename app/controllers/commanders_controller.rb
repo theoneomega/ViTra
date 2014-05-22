@@ -1,4 +1,7 @@
-class CommandersController < ApplicationController
+class CommandersController < ApplicationController 
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  
   # GET /commanders
   # GET /commanders.json
   def index

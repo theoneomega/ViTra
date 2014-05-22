@@ -1,4 +1,7 @@
 class VehiclesController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource :only => [:index, :show, :create, :update, :edit, :delete, :new]
+  
   # GET /vehicles
   # GET /vehicles.json
   def index

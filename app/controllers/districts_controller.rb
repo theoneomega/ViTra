@@ -1,4 +1,6 @@
 class DistrictsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /districts
   # GET /districts.json
   def index

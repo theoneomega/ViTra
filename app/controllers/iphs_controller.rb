@@ -1,4 +1,6 @@
 class IphsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource :only => [:index, :show, :create, :update, :edit, :delete, :new]
   # GET /iphs
   # GET /iphs.json
   def index
@@ -44,7 +46,7 @@ class IphsController < ApplicationController
 
     respond_to do |format|
       if @iph.save
-        format.html { redirect_to @iph, notice: 'Iph was successfully created.' }
+        format.html { redirect_to @iph, notice: 'IPH se actualizó correctamente.' }
         format.json { render json: @iph, status: :created, location: @iph }
       else
         format.html { render action: "new" }
@@ -83,13 +85,26 @@ class IphsController < ApplicationController
   
   
   def print
-    @iphs = Iph.order('created_at desc')
+    @search_iph = Iph.search do
+      if params[:date].present?
+        with(:created_at).greater_than(params[:date].to_time-1.day)
+      end
+      if params[:date_end].present?
+        with(:created_at).less_than(params[:date_end].to_time+1.day)
+      end
+      paginate :page => 1, :per_page => 2000
+    end
+    @iphs = @search_iph.results
+    
+    
+    
+#    @iphs = Iph.order('created_at desc')
   end
   
-  def get_sectors 
-    @has_many_models = Sector.all 
-    render json: @has_many_models, :callback => params[:callback] 
-  end
+#  def get_sectors 
+#    @has_many_models = Sector.all 
+#    render json: @has_many_models, :callback => params[:callback] 
+#  end
   
   
   

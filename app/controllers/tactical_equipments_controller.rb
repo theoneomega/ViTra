@@ -1,4 +1,6 @@
 class TacticalEquipmentsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /tactical_equipments
   # GET /tactical_equipments.json
   def index

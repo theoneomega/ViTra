@@ -45,8 +45,8 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
 end
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot_rails', '=2.0.0'
+gem 'sunspot_solr', '=2.0.0'
 gem 'progress_bar'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -61,4 +61,4 @@ gem 'progress_bar'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

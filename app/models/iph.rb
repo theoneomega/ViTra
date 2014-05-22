@@ -1,8 +1,8 @@
 class Iph < ActiveRecord::Base
   attr_accessible :addressed_to, :between_streets, :commander_id, :coordinator_id
-  attr_accessible :district_id, :event_date, :exterior_number, :facts_description, :id
+  attr_accessible :district_id, :event_date, :exterior_number, :facts_description, :id, :user_id
   attr_accessible :infraction_id, :interior_number, :kilometer, :office_number, :officer_id
-  attr_accessible :operative, :operative_name, :patrol_id, :references, :road, :road_name 
+  attr_accessible :operative, :operative_name, :patrol_id, :references, :road, :road_name, :created_at
   attr_accessible :sector_id, :shift, :state, :street_id, :suburb_id, :township_id, :zip, :person_attributes, :iph_id
   attr_accessible :vehicles_attributes, :drugs_attributes, :weapons_attributes, :money_attributes, :tactical_equipments_attributes
   attr_accessible :documents_attributes, :multimedium_attributes, :items_attributes, :street_name, :between, :coordinator_name, :qualifier_officer_name
@@ -19,11 +19,14 @@ class Iph < ActiveRecord::Base
   belongs_to :suburb
   belongs_to :sector
   belongs_to :street
+  belongs_to :user
   
   searchable do
     text :between_streets, :id.to_s
     text :facts_description, :boost => 2.0
     integer :id
+    
+    date :created_at
     
     text :infraccion do
       infraction.description

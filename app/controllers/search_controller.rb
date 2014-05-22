@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   def index
     @search_iph = Iph.search do 
       fulltext params[:search1] 
@@ -8,7 +10,7 @@ class SearchController < ApplicationController
       if params[:date_end].present?
         with(:event_date).less_than(params[:date_end].to_time+1.day)
       end
-      paginate :page => params[:page], :per_page => 20
+      paginate :page => params[:page], :per_page => 2000
     end
     @searches = @search_iph.results
     

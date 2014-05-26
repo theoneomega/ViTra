@@ -4,8 +4,7 @@ class IphsController < ApplicationController
   # GET /iphs
   # GET /iphs.json
   def index
-    @iphs = Iph.order('created_at desc')
-
+    @iphs = Iph.paginate(:page => params[:page], :per_page => 10).order('created_at desc')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @iphs }
@@ -46,7 +45,7 @@ class IphsController < ApplicationController
 
     respond_to do |format|
       if @iph.save
-        format.html { redirect_to @iph, notice: 'IPH se actualizó correctamente.' }
+        format.html { redirect_to @iph, notice: 'IPH se registro correctamente.' }
         format.json { render json: @iph, status: :created, location: @iph }
       else
         format.html { render action: "new" }
@@ -62,7 +61,7 @@ class IphsController < ApplicationController
 
     respond_to do |format|
       if @iph.update_attributes(params[:iph])
-        format.html { redirect_to @iph, notice: 'Iph was successfully updated.' }
+        format.html { redirect_to @iph, notice: 'IPH se actualizó correctamente.'  }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

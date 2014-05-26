@@ -11,6 +11,9 @@ gem 'seed_dump'
 
 gem 'roles_ui', git: 'http://github.com/paupauorg/roles-ui.git'
 gem 'devise'
+gem 'warden'
+gem 'will_paginate', "~> 3.0.4" 
+gem 'will_paginate-bootstrap'
 gem 'cancan'
 
 gem 'thin'

@@ -18,9 +18,9 @@
         <th>Comandante en turno</th>
         <th>Folio</th>
         <% if current_user.admin? %>
-        <th>Creado por:</th>
+          <th>Creado por:</th>
         <%end%>
-        <th></th>
+        <th>Acciones</th>
       </tr>
     </thead>
 
@@ -32,11 +32,13 @@
       <td><%= iph.infraction.description %></td>
       <td><%= iph.commander.name %></td>
       <td><%= iph.id %></td>
-      <td> <%= iph.user.username if current_user.admin?  %> </td>
+      <% if current_user.admin? %>
+        <td> <%= iph.user.username   %> </td>
+      <% end %>
       <td>
         <ul class="nav nav-pills">
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='Acciones'>Acciones<i class="icon-down-dir"></i>&nbsp;<i class="icon-caret-down"></i></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" title='Acciones'><i class="icon icon-cog"></i><i class="icon-down-dir"></i>&nbsp;<i class="icon-caret-down"></i></a>
             <ul class="dropdown-menu">
               <% if can? :show, Iph %>
                 <li role="presentation"><%= link_to '<i class="glyphicon glyphicon-eye-open"></i> Mostrar'.html_safe, iph %></li>
@@ -54,4 +56,5 @@
     <% end %>
     </tbody>
   </table>
+  <%= will_paginate @iphs, renderer: BootstrapPagination::Rails %>
 </div>

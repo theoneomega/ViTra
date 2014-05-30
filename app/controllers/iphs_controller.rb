@@ -41,8 +41,11 @@ class IphsController < ApplicationController
   # POST /iphs
   # POST /iphs.json
   def create
+    
+    id = Iph.last.id+1
+    
     @iph = Iph.new(params[:iph])
-
+    @iph.id = id
     respond_to do |format|
       if @iph.save
         format.html { redirect_to @iph, notice: 'IPH se registro correctamente.' }
@@ -97,13 +100,13 @@ class IphsController < ApplicationController
     
     
     
-#    @iphs = Iph.order('created_at desc')
+    #    @iphs = Iph.order('created_at desc')
   end
   
-#  def get_sectors 
-#    @has_many_models = Sector.all 
-#    render json: @has_many_models, :callback => params[:callback] 
-#  end
+  #  def get_sectors 
+  #    @has_many_models = Sector.all 
+  #    render json: @has_many_models, :callback => params[:callback] 
+  #  end
   
   
   

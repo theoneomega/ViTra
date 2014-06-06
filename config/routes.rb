@@ -67,6 +67,8 @@ ViTra::Application.routes.draw do
   resources :iphs do
     collection do
       get :print
+      get :street_name
+      get :counter
     end
   end
 

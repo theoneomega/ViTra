@@ -1,0 +1,54 @@
+<center>
+  <div class="search form-inline" style="margin: 0px auto; padding: 0px; width: 100%; "  >
+    <%= form_tag counter_iphs_path, :method => :get do %>
+
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon icon-calendar"></i> Desde</span>
+        <%= text_field_tag :date, nil, :as => :datetime_picker,  :class => 'form-control datePicker' %>
+        <span class="input-group-addon"><i class="icon icon-calendar"></i>Hasta</span>
+        <%= text_field_tag :date_end, nil, :as => :datetime_picker,  :class => 'form-control datePicker' %>
+        <%= hidden_field_tag :busqueda, :value => true %>
+      </div>
+
+      <%= button_tag( :class => "btn btn-success") do %>
+        <i class="icon-search icon-white"> </i> Filtrar fecha
+      <% end %>
+    </div>
+  <% end %>
+</center>
+
+<%= @counter.count %>
+
+<% @usuarios = User.all %>
+
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th> Usuario </th>
+        <th> Cantidad de registros </th>
+    </thead>
+
+    <tbody>
+
+      <%= content_tag_for(:tr, @usuarios) do |user| %>
+
+
+      <td> <%= user.username %>  </td>
+      <td> <%= user.iph.count %> </td>
+
+    <% end %>
+    </tbody>
+  </table>
+
+</div>
+<script type="text/javascript">
+  $(function() {
+    $('.datePicker').each(function() {
+      $(this).datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true,
+        yearRange: '-100:+0'});
+    });
+  });
+
+</script>

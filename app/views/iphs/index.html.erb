@@ -18,7 +18,8 @@
         <th>Comandante en turno</th>
         <th>Folio</th>
         <% if current_user.admin? %>
-          <th>Creado por:</th>
+          <th>Creado por</th>
+          <th>Hora de registro</th>
         <%end%>
         <th>Acciones</th>
       </tr>
@@ -34,6 +35,7 @@
       <td><%= iph.id %></td>
       <% if current_user.admin? %>
         <td> <%= iph.user.username   %> </td>
+        <td> <%= I18n.l iph.created_at, :format => "%H:%M HRS" %>
       <% end %>
       <td>
         <ul class="nav nav-pills">

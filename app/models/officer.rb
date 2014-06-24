@@ -4,11 +4,11 @@ class Officer < ActiveRecord::Base
   
   has_many :iphs
   def name
-  	self.first_name+ " "+self.last_name1+" "+self.last_name2
+  	self.first_name+ " "+self.last_name1
   end
   
   def officer_number
-    self.id.to_s+" "+self.first_name+ " "+self.last_name1+" "+self.last_name2
+    self.id.to_s+" "+self.first_name+ " "+self.last_name1
   end
 
 

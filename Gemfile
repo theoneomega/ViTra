@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '3.2.18'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -15,6 +15,7 @@ gem 'warden'
 gem 'will_paginate', "~> 3.0.4" 
 gem 'will_paginate-bootstrap'
 gem 'cancan'
+gem 'passenger'
 
 gem 'thin'
 #gem 'puma'
@@ -47,6 +48,7 @@ gem 'paperclip', '~> 2.3'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'brakeman', :require => false
 end
 gem 'sunspot_rails', '=2.0.0'
 gem 'sunspot_solr', '=2.0.0'

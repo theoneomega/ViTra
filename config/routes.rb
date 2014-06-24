@@ -1,6 +1,7 @@
 ViTra::Application.routes.draw do
  
   mount_roles_ui
+  
   devise_for :users #,  :controllers #=> { :registrations => "users/registrations" }
 
   resources :users

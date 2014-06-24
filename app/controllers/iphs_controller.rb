@@ -94,51 +94,54 @@ class IphsController < ApplicationController
       if params[:date_end].present?
         with(:created_at).less_than(params[:date_end].to_time+1.day)
       end
-      paginate :page => 1, :per_page => 2000
+      paginate :page => 1, :per_page => 999
     end
-    @iphs = @search_iph.results
-
+#    if @search_iph.count > 1000 
+#      @search_iph = Iph.find(:all ,:limit => 999)
+#    else
+      @iphs = @search_iph.results
+#    end
   end
   
-  def counter
-
-    if params[:busqueda]
-      unless params[:date].nil? or params[:date] == ""
-        to_date = params[:date].to_date.strftime("%Y-%m-%d")
-      end
-      y = " and "
-      
-      unless params[:date_end].nil? or params[:date_end] == ""
-        endate = params[:date_end]
-        final = endate.to_date+1.day
-        to_date_end = final.to_date.strftime("%Y-%m-%d")
-      end
-      
-      date = params[:date].blank? ? "" : "created_at >  ('" + to_date + "')"
-      date_end = params[:date_end].blank? ? "" : "created_at <  ('" + to_date_end + "')"  
-      
-      
-      
-      if (!date.nil? or !date == "") and (date_end.nil? or date_end == "")
-        #        flash[:error] = "date no es nulo pero date_end si"
-#        @counter = Iph.select(:user_id).where("#{date}").group("user_id")
-        @counter = Iph.where("#{date}").order('id DESC').paginate(:page => params[:page])
-      elsif (date.nil? or date == "") and (!date_end.nil? or !date_end == "")
-#        @counter = Iph.select(:user_id).where("#{date_end}").group("user_id")
-        @counter = Iph.where("#{date_end}").order('id DESC').paginate(:page => params[:page])
-        #        flash[:error] = "date_end no es nulo pero date si"
-      elsif (!date.nil? or !date == "") and (!date_end.nil? or !date_end == "")
-#        @counter = Iph.select(:user_id).where("#{date} and #{date_end}").group("user_id")
-        @counter = Iph.where("#{date} and #{date_end}").order('id DESC').paginate(:page => params[:page])
-        #        flash[:error]="ninguno es nulo"
-      end
-      #        @counter = Iph.all
-        
-      
-    else
-      @counter = Iph.all
-    end    
-  end
+  #  def counter
+  #
+  #    if params[:busqueda]
+  #      unless params[:date].nil? or params[:date] == ""
+  #        to_date = params[:date].to_date.strftime("%Y-%m-%d")
+  #      end
+  #      y = " and "
+  #      
+  #      unless params[:date_end].nil? or params[:date_end] == ""
+  #        endate = params[:date_end]
+  #        final = endate.to_date+1.day
+  #        to_date_end = final.to_date.strftime("%Y-%m-%d")
+  #      end
+  #      
+  #      date = params[:date].blank? ? "" : "created_at >  ('" + to_date + "')"
+  #      date_end = params[:date_end].blank? ? "" : "created_at <  ('" + to_date_end + "')"  
+  #      
+  #      
+  #      
+  #      if (!date.nil? or !date == "") and (date_end.nil? or date_end == "")
+  #        #        flash[:error] = "date no es nulo pero date_end si"
+  ##        @counter = Iph.select(:user_id).where("#{date}").group("user_id")
+  #        @counter = Iph.where("#{date}").order('id DESC').paginate(:page => params[:page])
+  #      elsif (date.nil? or date == "") and (!date_end.nil? or !date_end == "")
+  ##        @counter = Iph.select(:user_id).where("#{date_end}").group("user_id")
+  #        @counter = Iph.where("#{date_end}").order('id DESC').paginate(:page => params[:page])
+  #        #        flash[:error] = "date_end no es nulo pero date si"
+  #      elsif (!date.nil? or !date == "") and (!date_end.nil? or !date_end == "")
+  ##        @counter = Iph.select(:user_id).where("#{date} and #{date_end}").group("user_id")
+  #        @counter = Iph.where("#{date} and #{date_end}").order('id DESC').paginate(:page => params[:page])
+  #        #        flash[:error]="ninguno es nulo"
+  #      end
+  #      #        @counter = Iph.all
+  #        
+  #      
+  #    else
+  #      @counter = Iph.all
+  #    end    
+  #  end
   
   #  def get_sectors 
   #    @has_many_models = Sector.all 

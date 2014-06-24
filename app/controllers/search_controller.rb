@@ -10,7 +10,7 @@ class SearchController < ApplicationController
       if params[:date_end].present?
         with(:event_date).less_than(params[:date_end].to_time+1.day)
       end
-      paginate :page => params[:page], :per_page => 2000
+      paginate :page => params[:page], :per_page => 999
     end
     @searches = @search_iph.results
     

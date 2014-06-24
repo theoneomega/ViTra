@@ -47,7 +47,7 @@
     </p>
     <p>
       <b >Oficial</b>
-    <u ><%= @iph.officer.name.upcase if @iph.officer %></u>
+    <u ><%= @iph.officer.name.upcase if @iph.officer %> <%= @iph.officer.last_name2 if @iph.officer.last_name2? %></u>
     </p>
     <p>
       <b >Operativo</b>

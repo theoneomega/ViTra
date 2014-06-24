@@ -9,8 +9,8 @@ class Role < ActiveRecord::Base
   has_many :permissions, :dependent => :destroy, :order => :priority
 
   validates :name, :presence => true
-  validates_uniqueness_of :name
-  validates_format_of :name, :with => /^[a-z][a-z_]+/
+  validates :name, :uniqueness => true
+  validates_format_of :name, :with => /\A and \z/
   validates_associated :permissions
 
   accepts_nested_attributes_for :permissions, :reject_if => proc { |attrs| attrs['name'].blank? }, :allow_destroy => true

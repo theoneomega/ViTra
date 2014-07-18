@@ -12,7 +12,7 @@ class Person < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name1, :presence => true
 #  validates :birth_date, :presence => true
-  
+  audited
   
   has_many :crime_person, :dependent => :destroy
   has_many :crimes, :through => :crime_person

@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :assignments
   has_many :assignments
   has_many :iph
+  audited
 end

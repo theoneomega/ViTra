@@ -3,4 +3,5 @@ class Item < ActiveRecord::Base
   belongs_to :iph
   validates :kind, :presence => true
   validates :quantity, :presence => true
+  audited
 end

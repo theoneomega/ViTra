@@ -17,9 +17,10 @@
         <th>Delito y/o falta administrativa</th>
         <th>Comandante en turno</th>
         <th>Folio</th>
-        <% if current_user.admin? %>
+        
+        <% if can? :creator, Iph %>
+        <%# if current_user.admin? %>
           <th>Creado por</th>
-          <th>Hora de registro</th>
         <%end%>
         <th>Acciones</th>
       </tr>
@@ -33,9 +34,9 @@
       <td><%= iph.infraction.description %></td>
       <td><%= iph.commander.name %></td>
       <td><%= iph.id %></td>
-      <% if current_user.admin? %>
+      <% if can? :creator, Iph %>
         <td> <%= iph.user.username   %> </td>
-        <td> <%= I18n.l iph.created_at, :format => "%H:%M HRS" %>
+      <!--  <td> <%= I18n.l iph.created_at, :format => "%H:%M HRS" %> -->
       <% end %>
       <td>
         <ul class="nav nav-pills">

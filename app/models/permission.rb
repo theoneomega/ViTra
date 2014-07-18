@@ -1,7 +1,7 @@
 class Permission < ActiveRecord::Base
   attr_accessible :name, :resource, :condition, :cannot, :priority, :role_id
   belongs_to :role
-    
+  audited
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => [:role_id, :resource, :condition, :cannot]
     

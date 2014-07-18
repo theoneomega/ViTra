@@ -4,4 +4,5 @@ class Vehicle < ActiveRecord::Base
   belongs_to :kind
   belongs_to :brand
   belongs_to :sub_brand
+  audited
 end

@@ -13,12 +13,6 @@ GIT
       simple_form
       twitter-bootstrap-rails (= 2.2.6)
 
-GIT
-  remote: https://github.com/zpaulovics/datetimepicker-rails.git
-  revision: f0316e55d6a46794e56d5e636ea838c9eaef34cb
-  specs:
-    datetimepicker-rails (0.0.8)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -51,6 +45,10 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     arel (3.0.3)
+    audited (3.0.0)
+    audited-activerecord (3.0.0)
+      activerecord (~> 3.0)
+      audited (= 3.0.0)
     awesome_nested_fields (0.6.4)
       rails (>= 3.0.0)
     bcrypt (3.1.7)
@@ -251,6 +249,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-oracle_enhanced-adapter (~> 1.4.0)
+  audited-activerecord
   awesome_nested_fields
   better_errors
   binding_of_caller
@@ -260,7 +259,6 @@ DEPENDENCIES
   brakeman
   cancan
   coffee-rails (~> 3.2.1)
-  datetimepicker-rails!
   debugger
   devise
   jquery-rails

@@ -1,6 +1,6 @@
 class Role < ActiveRecord::Base
   attr_accessible :name, :permissions_attributes
-
+  audited
   has_many :assignments, :dependent => :destroy
   RolesUi.user_classes.each do |user_class|
     has_many user_class.table_name.to_sym, :through => :assignments, :source => :localuser, :source_type => user_class

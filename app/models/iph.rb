@@ -8,7 +8,7 @@ class Iph < ActiveRecord::Base
   attr_accessible :documents_attributes, :multimedium_attributes, :items_attributes, :street_name, :between, :coordinator_name, :qualifier_officer_name
   #  autocomplete :officer, :first_name, :full => true
   
-  
+  audited
   
   belongs_to :officer
   belongs_to :infraction
@@ -22,15 +22,25 @@ class Iph < ActiveRecord::Base
   belongs_to :user
   
   searchable do
-    text :between_streets, :id.to_s
+    text :between_streets, :id.to_s, :id_officer
     text :facts_description, :boost => 2.0
     integer :id
     
     date :created_at
     
+    text :vehicles do  
+      brands.map(&:description)
+    end  
+    
+   
+    
     text :infraccion do
       infraction.description
     end
+  end
+  
+  def id_officer
+    self.officer.id.to_s
   end
   
   def street_name
@@ -48,7 +58,7 @@ class Iph < ActiveRecord::Base
   #  def street_name=(description)
   #    self.street_id = Street.find_by_description(description) unless description.blank?
   #  end
-  
+  has_many :brands, :through => :vehicles
   has_many :person, :dependent => :destroy
   has_many :vehicles, :dependent => :destroy
   has_many :drugs, :dependent => :destroy
@@ -61,12 +71,12 @@ class Iph < ActiveRecord::Base
   
   validates :officer_id, :presence => true
   validates :infraction_id, :presence => true
-#  validates :coordinator_name, :presence => true
+  #  validates :coordinator_name, :presence => true
   validates :commander_id, :presence => true
   validates :sector_id, :presence => true
   validates :district_id, :presence => true
   validates :event_date, :presence => true
-#  validates :addressed_to, :presence => true
+  #  validates :addressed_to, :presence => true
   validates :street_name, :presence => true
   validates :office_number, :presence => true
   validates :shift, :presence => true

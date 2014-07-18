@@ -4,4 +4,5 @@ class Commander < ActiveRecord::Base
   def name
   	self.first_name+ " "+self.last_name1+" "+self.last_name2
   end
+  audited
 end
